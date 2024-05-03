@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Medic</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="./../assets/css/main.css" />
+    <link rel="stylesheet" href="./../assets/css/table.css" />
+    <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="w-screen h-screen bg-[#fef7ff] flex flex-col">
+    <!-- top nav bar -->
+    <header
+      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 flex flex-row justify-between items-center drop-shadow-xl px-2 lg:px-8 py-2"
+    >
+      <div class="h-full flex flex-row items-center space-x-2">
+        <button
+          class="flex lg:hidden"
+          type="button"
+          data-drawer-target="mobile-drawer"
+          data-drawer-show="mobile-drawer"
+          aria-controls="mobile-drawer"
+        >
+          <span class="material-symbols-outlined"> menu </span>
+        </button>
+        <div class="flex flex-row items-center space-x-2">
+          <a class="w-16 md:w-20 h-16 md:h-20 flex items-center justify-center">
+            <img
+              src="./../assets/images/logos/logo.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+          <div
+            class="mx-3 md:px-4 md:py-1 bg-primary/20 text-primary rounded-md"
+          >
+            <p class="font-extralight text-[10px] lg:text-[xs]">
+              Pharmacy Center
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <form
+        action="/search.html"
+        method="get"
+        class="hidden lg:flex h-full w-[49%] bg-gray-200 dark:bg-slate-800 rounded-full p-2 items-center"
+      >
+        <input
+          type="text"
+          name="q"
+          class="h-full w-[90%] outline-none bg-transparent border-0 rounded-full px-1"
+        />
+        <div class="w-[10%] h-full flex items-center justify-center">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+      </form>
+      <div class="flex flex-row items-center space-x-8 relative">
+        <div class="flex flex-row space-x-6">
+          <button
+            title="Messages"
+            id="messagesDropDown"
+            data-dropdown-toggle="messages-dropdown"
+          >
+            <div class="relative">
+              <span class="material-symbols-outlined text-base md:text-xl"
+                >chat</span
+              >
+              <div
+                class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+              >
+                <p class="text-white text-[10px] md:text-xs">1</p>
+              </div>
+            </div>
+            <div
+              id="messages-dropdown"
+              class="z-50 hidden w-[400px] h-[70vh] p-2"
+            >
+              <div
+                class="bg-white divide-y divide-gray-100 flex flex-col space-y-2 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
+              >
+                <div class="flex h-[15%] bg-white flex-col space-y-4 relative">
+                  <div class="w-full relative flex justify-start items-center">
+                    <p class="text-lg font-semibold">Messages</p>
+                    <div class="absolute right-0 flex flex-row space-x-2">
+                      <div
+                        data-modal-target="main-message-modal"
+                        data-modal-toggle="main-message-modal"
+                        data-tab="start-chatting-tab"
+                        title="Expand"
+                        class="tab-message-button end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto hidden lg:flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <span class="material-symbols-outlined text-md">
+                          open_in_full
+                        </span>
+                      </div>
+                      <div
+                        data-modal-hide="messages-dropdown"
+                        title="Close"
+                        class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <span class="material-symbols-outlined text-md">
+                          close
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-between">
+                    <div class="bg-secondary rounded-md py-1 px-3">
+                      <p class="font-bold text-xs">4 Unread</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
+                >
+                  <!-- message item card -->
+                  <div
+                    data-modal-target="read-message-modal"
+                    data-modal-toggle="read-message-modal"
+                    class="h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+                  >
+                    <div class="w-[20%]">
+                      <div
+                        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <img
+                          src="./../assets/images/avatar/2.png"
+                          class="w-full h-full object-cover"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[60%] flex flex-col space-y-1 items-start">
+                      <p class="font-semibold">Khalid</p>
+                      <p class="line-clamp-1">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Rem suscipit ipsam, optio dolores dolor aperiam
+                        hic deserunt, ipsa quo, nesciunt aut non possimus nulla
+                        ipsum. Molestiae, nihil. Aperiam, explicabo qui.
+                      </p>
+                    </div>
+                    <div class="w-[20%] flex flex-col space-y-2 items-end">
+                      <span>12:10pm</span>
+                      <span
+                        class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                      >
+                        <p class="text-white text-xs">5</p>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- end message item card -->
+
+                  <!-- message item card -->
+                  <div
+                    data-modal-target="read-message-modal"
+                    data-modal-toggle="read-message-modal"
+                    class="h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+                  >
+                    <div class="w-[20%]">
+                      <div
+                        class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center"
+                      >
+                        <p class="text-primary">H</p>
+                      </div>
+                    </div>
+                    <div class="w-[60%] flex flex-col space-y-1 items-start">
+                      <p class="font-semibold">Helen T.</p>
+                      <p class="line-clamp-1">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Rem suscipit ipsam, optio dolores dolor aperiam
+                        hic deserunt, ipsa quo, nesciunt aut non possimus nulla
+                        ipsum. Molestiae, nihil. Aperiam, explicabo qui.
+                      </p>
+                    </div>
+                    <div class="w-[20%] flex flex-col space-y-2 items-end">
+                      <span>12:10pm</span>
+                      <span
+                        class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                      >
+                        <p class="text-white text-xs">5</p>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- end message item card -->
+                </div>
+              </div>
+            </div>
+          </button>
+          <button
+            title="Notifications"
+            id="notificationDropDown"
+            data-dropdown-toggle="notification-dropdown"
+            aria-label="profile link"
+            data-dropdown-placement="top"
+          >
+            <div class="relative">
+              <span class="material-symbols-outlined text-base md:text-xl"
+                >notifications</span
+              >
+              <div
+                class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+              >
+                <p class="text-white text-[10px] md:text-xs">3</p>
+              </div>
+            </div>
+            <div
+              id="notification-dropdown"
+              class="z-50 hidden w-[400px] h-[70vh] p-2"
+            >
+              <div
+                class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
+              >
+                <div class="w-full h-full overflow-y-auto rounded-md">
+                  <div class="flex h-[15%] bg-white flex-col space-y-4">
+                    <div
+                      class="w-full relative flex justify-start items-center"
+                    >
+                      <p class="text-lg font-semibold">Notifications</p>
+                      <div
+                        aria-label="close login form button"
+                        class="absolute right-0"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined"> close </span>
+                      </div>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                      <div class="bg-secondary rounded-md py-1 px-3">
+                        <p class="font-bold text-xs">3 Unread</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
+                  >
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="w-full flex flex-row items-center justify-between"
+                      >
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        <div class="bg-secondary rounded-md py-1 px-2">
+                          <p class="text-xs">Today</p>
+                        </div>
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                      </div>
+                      <!-- notification ite, -->
+                      <div
+                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                      <!-- notification item -->
+                      <div
+                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                    </div>
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="w-full flex flex-row items-center justify-between"
+                      >
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        <div class="bg-secondary rounded-md py-1 px-2">
+                          <p class="text-xs">Yesterday</p>
+                        </div>
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                      </div>
+                      <!-- notification ite, -->
+                      <div
+                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                      <!-- notification item -->
+                      <div
+                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <button
+          id="accountDropDown"
+          data-dropdown-toggle="account-dropdown"
+          data-dropdown-placement="top"
+          aria-label="profile link"
+          class="flex flex-row space-x-2 items-center"
+        >
+          <div
+            class="w-10 h-10 bg-primary/30 rounded-full flex items-center justify-center relative"
+          >
+            <img
+              src="./../assets/images/avatar/pharmacy.png"
+              layout="fill"
+              objectFit="cover"
+              alt="Pharmacy"
+            />
+          </div>
+          <div class="hidden lg:flex flex-row items-center">
+            <p>Southwood Pharmacy</p>
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+          </div>
+
+          <div id="account-dropdown" class="z-10 hidden w-72 p-2">
+            <div
+              class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full shadow p-2 rounded-lg"
+            >
+              <div
+                class="w-full py-2 flex flex-col space-y-4 items-start border-b"
+              >
+                <div>
+                  <p class="text-[#49454F] font-bold">Welcome back!</p>
+                </div>
+                <a href="#" class="text-red-600 font-semibold"> Log out </a>
+              </div>
+              <div class="flex flex-col items-start space-y-3">
+                <a
+                  href="profile.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl">
+                    person_2
+                  </span>
+                  <p class="font-semibold text-[#49454F]">Profile</p>
+                </a>
+                <a
+                  href="orders.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl"
+                    >shopping_cart_checkout</span
+                  >
+                  <p class="font-semibold text-[#49454F]">Orders</p>
+                </a>
+                <a
+                  href="help.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl"> help </span>
+                  <p class="font-semibold text-[#49454F]">Help</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </header>
+    <!-- end top bar -->
+    <!-- main section -->
+    <main
+      class="w-full h-fit max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10"
+    >
+      <!-- navigation menu -->
+      <nav
+        class="lg:w-[20%] h-full hidden lg:flex flex-col space-y-10 bg-white overflow-y-auto pt-10"
+      >
+        <div class="flex flex-col space-y-2 px-8">
+          <div class="px-4">
+            <p class="font-semibold text-gray-300 text-uppercase">MAIN MENU</p>
+          </div>
+          <a href="./index.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">dashboard</span>
+            <p class="">Dashboard</p>
+          </a>
+          <a href="./products.html" class="active-menu">
+            <span class="material-symbols-outlined text-2xl">list</span>
+            <p class="">Products</p>
+          </a>
+          <a href="./orders.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">Orders</p>
+          </a>
+          <a href="./promotion.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">show_chart</span>
+            <p class="">Promotion</p>
+          </a>
+          <a href="./reports.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">insert_chart</span>
+            <p class="">Reports</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2 px-8">
+          <div class="px-4">
+            <p class="font-semibold text-gray-300 text-uppercase">OTHERS</p>
+          </div>
+          <a href="./settings.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2 px-8">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </nav>
+      <section
+        class="w-full lg:w-[75%] h-full rounded-md flex flex-col space-y-6 overflow-y-auto no-scrollbar py-2"
+      >
+        <div
+          class="w-full bg-white rounded-md p-4 flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+        >
+          <!-- head -->
+          <div
+            class="w-full lg:flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0"
+          >
+            <p class="text-xl font-semibold">Manage Products</p>
+            <div class="flex flex-row items-center space-x-2">
+              <button
+                data-modal-target="bulk-upload-modal"
+                data-modal-toggle="bulk-upload-modal"
+                class="btn-primary-outline h-10 px-6 rounded-full"
+              >
+                <p class="text-green-500">Bulk Upload</p>
+              </button>
+              <button
+                ariaLabel="Add New Product button"
+                data-modal-target="add-new-product-modal"
+                data-modal-toggle="add-new-product-modal"
+                class="btn-primary rounded-full h-10 py-3 px-4 flex flex-row items-center space-x-2"
+              >
+                <span class="material-symbols-outlined text-sm">add</span>
+                <p>Add New Product</p>
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+            <ul
+              class="flex overflow-x-auto no-scrollbar -mb-px text-sm font-medium text-center"
+              id="default-tab"
+              data-tabs-toggle="#default-tab-content"
+              data-tabs-active-classes="border-primary"
+              role="tablist"
+            >
+              <li class="me-2" role="presentation">
+                <button
+                  class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md"
+                  id="uploaded-tab"
+                  data-tabs-target="#uploaded"
+                  type="button"
+                  role="tab"
+                  aria-controls="uploaded"
+                  aria-selected="false"
+                >
+                  Uploaded Drugs (26)
+                </button>
+              </li>
+              <li class="me-2" role="presentation">
+                <button
+                  class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  id="pending-tab"
+                  data-tabs-target="#pending"
+                  type="button"
+                  role="tab"
+                  aria-controls="pending"
+                  aria-selected="false"
+                >
+                  Pending Approval (4)
+                </button>
+              </li>
+              <li class="me-2" role="presentation">
+                <button
+                  class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  id="not-approved-tab"
+                  data-tabs-target="#not-approved"
+                  type="button"
+                  role="tab"
+                  aria-controls="not-approved"
+                  aria-selected="false"
+                >
+                  Not Approved (2)
+                </button>
+              </li>
+              <li role="presentation">
+                <button
+                  class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  id="disabled-tab"
+                  data-tabs-target="#disabled"
+                  type="button"
+                  role="tab"
+                  aria-controls="disabled"
+                  aria-selected="false"
+                >
+                  Disabled Drugs (3)
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="w-full flex flex-row items-center justify-between">
+            <select class="border rounded-md p-2 bg-inherit">
+              <option key="{id}" value="Categories">Categories</option>
+            </select>
+            <div class="flex flex-row items-center space-x-3">
+              <button
+                class="h-10 w-10 flex items-center justify-center"
+                title="Disable"
+              >
+                <span class="material-symbols-outlined">
+                  disabled_by_default
+                </span>
+              </button>
+              <button
+                class="h-10 w-10 flex items-center justify-center"
+                title="Delete"
+              >
+                <span class="material-symbols-outlined"> delete </span>
+              </button>
+              <div
+                class="flex h-12 w-[60%] lg:w-[20vw] bg-inherit border border-gray-400 rounded-full p-2 items-center"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Product name or category"
+                  class="pt-2 text-sm w-[90%] text-gray-900 border-0 rounded-lg text-start outline-none ring-0"
+                  placeholder="Search for users"
+                />
+                <div class="w-[10%] h-full flex items-center justify-center">
+                  <span class="material-symbols-outlined">search</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="default-tab-content">
+            <div
+              class="hidden"
+              id="uploaded"
+              role="tabpanel"
+              aria-labelledby="uploaded-tab"
+            >
+              <div class="overflow-x-auto rounded-lg">
+                <table
+                  class="w-full text-sm text-left border-separate border-spacing-y-3"
+                >
+                  <thead
+                    class="text-xs text-gray-700 uppercase bg-[#F3EDF7] dark:bg-gray-700 dark:text-gray-400 border my-10"
+                  >
+                    <tr class="my-10">
+                      <th scope="col" class="p-4">
+                        <div class="flex items-center">
+                          <input
+                            id="checkbox-all-search"
+                            type="checkbox"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label for="checkbox-all-search" class="sr-only"
+                            >checkbox</label
+                          >
+                        </div>
+                      </th>
+                      <th scope="col" class="px-6 py-3">Product Code</th>
+                      <th scope="col" class="px-6 py-3">Category</th>
+                      <th scope="col" class="px-6 py-3">
+                        Price
+                        <span
+                          class="material-symbols-outlined text-xs rotate-90"
+                        >
+                          sync_alt
+                        </span>
+                      </th>
+                      <th scope="col" class="px-6 py-3">Stock</th>
+                      <th scope="col" class="px-6 py-3">
+                        Created
+                        <span
+                          class="material-symbols-outlined text-xs rotate-90"
+                        >
+                          sync_alt
+                        </span>
+                      </th>
+                      <th scope="col" class="px-6 py-3">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="px-2">
+                    <!-- item -->
+                    <tr class="border-4 rounded-full">
+                      <td class="w-4 p-4">
+                        <div class="flex items-center">
+                          <input
+                            id="checkbox-table-search-1"
+                            type="checkbox"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label for="checkbox-table-search-1" class="sr-only"
+                            >checkbox</label
+                          >
+                        </div>
+                      </td>
+                      <td
+                        scope="row"
+                        class="flex flex-col items-start px-6 py-4 whitespace-nowrap"
+                      >
+                        <span class="font-light">4836SUSG</span>
+                        <div class="flex flex-row space-x-1">
+                          <span class="font-bold">Brand</span>
+                          <span class="font-medium text-gray-500">Emzor</span>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <span class="font-light"
+                          >Pain, Fever, Inflammation</span
+                        >
+                      </td>
+                      <td class="px-6 py-4">321</td>
+                      <td class="px-6 py-4">$32.00</td>
+                      <td class="px-6 py-4">
+                        <p>02/12/23</p>
+                      </td>
+
+                      <td class="px-6 py-4">
+                        <button
+                          ariaLabel="Edit button"
+                          id="dropdownDefaultButton"
+                          data-dropdown-toggle="dropdown"
+                          class="flex flex-row items-start space-x-2"
+                        >
+                          <div class="font-medium text-primary hover:underline">
+                            Edit
+                          </div>
+                          <span class="material-symbols-outlined"
+                            >arrow_drop_down</span
+                          >
+                        </button>
+                        <div
+                          id="dropdown"
+                          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                        >
+                          <ul
+                            class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButtonThree"
+                          >
+                            <li>
+                              <a
+                                role="button"
+                                data-modal-target="edit-product-modal"
+                                data-modal-toggle="edit-product-modal"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Edit
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                id="disable-product"
+                                role="button"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Disable
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                data-modal-target="delete-product-modal"
+                                data-modal-toggle="delete-product-modal"
+                                role="button"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Delete
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- end item -->
+                    <!-- item -->
+                    <tr
+                      class="bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    >
+                      <td class="w-4 p-4">
+                        <div class="flex items-center">
+                          <input
+                            id="checkbox-table-search-1"
+                            type="checkbox"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label for="checkbox-table-search-1" class="sr-only"
+                            >checkbox</label
+                          >
+                        </div>
+                      </td>
+                      <td
+                        scope="row"
+                        class="flex flex-col items-start px-6 py-4 whitespace-nowrap"
+                      >
+                        <span class="font-light">5926HS</span>
+                        <div class="flex flex-row space-x-1">
+                          <span class="font-bold">Brand</span>
+                          <span class="font-medium text-gray-500">Generic</span>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <span class="font-light"
+                          >Pain, Fever, Inflammation</span
+                        >
+                      </td>
+                      <td class="px-6 py-4">321</td>
+                      <td class="px-6 py-4">$32.00</td>
+                      <td class="px-6 py-4">
+                        <p>02/12/23</p>
+                      </td>
+
+                      <td class="px-6 py-4">
+                        <button
+                          ariaLabel="Edit button"
+                          id="dropdownDefaultButtonTwo"
+                          data-dropdown-toggle="dropdown-two"
+                          class="flex flex-row items-start space-x-2"
+                        >
+                          <div class="font-medium text-primary hover:underline">
+                            Edit
+                          </div>
+                          <span class="material-symbols-outlined"
+                            >arrow_drop_down</span
+                          >
+                        </button>
+                        <div
+                          id="dropdown-two"
+                          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                        >
+                          <ul
+                            class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButtonThree"
+                          >
+                            <li>
+                              <a
+                                role="button"
+                                data-modal-target="edit-product-modal"
+                                data-modal-toggle="edit-product-modal"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Edit
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                id="disable-product"
+                                role="button"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Disable
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                data-modal-target="delete-product-modal"
+                                data-modal-toggle="delete-product-modal"
+                                role="button"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Delete
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- end item -->
+                    <!-- item -->
+                    <tr
+                      class="bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    >
+                      <td class="w-4 p-4">
+                        <div class="flex items-center">
+                          <input
+                            id="checkbox-table-search-1"
+                            type="checkbox"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          />
+                          <label for="checkbox-table-search-1" class="sr-only"
+                            >checkbox</label
+                          >
+                        </div>
+                      </td>
+                      <td
+                        scope="row"
+                        class="flex flex-col items-start px-6 py-4 whitespace-nowrap"
+                      >
+                        <span class="font-light">6927JGH</span>
+                        <div class="flex flex-row space-x-1">
+                          <span class="font-bold">Brand</span>
+                          <span class="font-medium text-gray-500">Pfizer</span>
+                        </div>
+                      </td>
+                      <td class="px-6 py-4">
+                        <span class="font-light"
+                          >Pain, Fever, Inflammation</span
+                        >
+                      </td>
+                      <td class="px-6 py-4">321</td>
+                      <td class="px-6 py-4">$32.00</td>
+                      <td class="px-6 py-4">
+                        <p>02/12/23</p>
+                      </td>
+
+                      <td class="px-6 py-4">
+                        <button
+                          ariaLabel="Edit button"
+                          id="dropdownDefaultButtonThree"
+                          data-dropdown-toggle="dropdown-three"
+                          class="flex flex-row items-start space-x-2"
+                        >
+                          <div class="font-medium text-primary hover:underline">
+                            Edit
+                          </div>
+                          <span class="material-symbols-outlined"
+                            >arrow_drop_down</span
+                          >
+                        </button>
+                        <div
+                          id="dropdown-three"
+                          class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                        >
+                          <ul
+                            class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButtonThree"
+                          >
+                            <li>
+                              <a
+                                role="button"
+                                data-modal-target="edit-product-modal"
+                                data-modal-toggle="edit-product-modal"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Edit
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                id="disable-product"
+                                role="button"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Disable
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                data-modal-target="delete-product-modal"
+                                data-modal-toggle="delete-product-modal"
+                                role="button"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                Delete
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    <!-- end item -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="hidden"
+              id="pending"
+              role="tabpanel"
+              aria-labelledby="pending-tab"
+            >
+              <div
+                class="w-full min-h-[50vh] flex flex-col space-y-2 justify-center items-center"
+              >
+                <div>
+                  <span
+                    class="material-symbols-outlined text-[100px] text-primary"
+                  >
+                    summarize
+                  </span>
+                </div>
+                <span class="text-lg font-semibold">
+                  You don't have any Products.
+                </span>
+                <span>When you do, you’ll see them here.</span>
+                <button
+                  ariaLabel="Add New Product button"
+                  data-modal-target="add-new-product-modal"
+                  data-modal-toggle="add-new-product-modal"
+                  class="btn-primary rounded-full h-10 py-3 px-4 flex flex-row items-center space-x-2"
+                >
+                  <span class="material-symbols-outlined text-sm">add</span>
+                  <p>Add New Product</p>
+                </button>
+              </div>
+            </div>
+            <div
+              class="hidden"
+              id="not-approved"
+              role="tabpanel"
+              aria-labelledby="not-approved-tab"
+            ></div>
+            <div
+              class="hidden"
+              id="disabled"
+              role="tabpanel"
+              aria-labelledby="disabled-tab"
+            ></div>
+          </div>
+
+          <!-- pagination -->
+          <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-row space-x-2">
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined">skip_previous</span>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined"> arrow_left </span>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center border-primary/10 bg-primary/10 text-primary"
+              >
+                <p>1</p>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <p>2</p>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <p>3</p>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined"> arrow_right </span>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined">skip_next</span>
+              </button>
+            </div>
+            <div class="hidden lg:flex flex-row items-center space-x-2">
+              <p class="font-semibold text-sm">Items per page:</p>
+              <select class="border rounded-md p-2 bg-inherit">
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+              </select>
+            </div>
+          </div>
+          <!-- pagination end -->
+        </div>
+      </section>
+    </main>
+
+    <!-- drawer component -->
+    <div
+      id="mobile-drawer"
+      class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 dark:bg-gray-800"
+      tabindex="-1"
+      aria-labelledby="mobile-drawer-label"
+    >
+      <div class="flex flex-row space-x-2 border-b">
+        <button
+          type="button"
+          data-drawer-hide="mobile-drawer"
+          aria-controls="mobile-drawer"
+        >
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+        <div class="flex flex-row items-center space-x-2">
+          <a class="w-16 h-10 flex items-center justify-center">
+            <img
+              src="./../assets/images/logos/logo.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+          <div
+            class="mx-3 md:px-4 md:py-1 bg-primary/20 text-primary rounded-md"
+          >
+            <p class="font-extralight text-[10px] lg:text-[xs]">
+              Pharmacy Center
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 overflow-y-auto no-scrollbar">
+        <div class="flex flex-col space-y-2">
+          <div class="">
+            <p class="font-semibold text-gray-300 text-uppercase">MAIN MENU</p>
+          </div>
+          <a href="./index.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">dashboard</span>
+            <p class="">Dashboard</p>
+          </a>
+          <a href="./products.html" class="active-menu">
+            <span class="material-symbols-outlined text-2xl">list</span>
+            <p class="">Products</p>
+          </a>
+          <a href="./orders.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">Orders</p>
+          </a>
+          <a href="./promotion.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">show_chart</span>
+            <p class="">Promotion</p>
+          </a>
+          <a href="./reports.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">insert_chart</span>
+            <p class="">Reports</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="">
+            <p class="font-semibold text-gray-300 text-uppercase">OTHERS</p>
+          </div>
+          <a href="./settings.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- end drawer component -->
+
+    <!-- bulk upload modal -->
+    <div
+      id="bulk-upload-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div
+        class="relative bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <div
+          class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600"
+        >
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+            Bulk Upload
+          </h3>
+          <button
+            type="button"
+            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-hide="bulk-upload-modal"
+          >
+            <span class="material-symbols-outlined"> close </span>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="p-4 md:p-5 flex flex-col space-y-10">
+          <p>
+            Please download the spreadsheet template to fill out multiple
+            products at go.
+          </p>
+          <div class="flex items-center justify-end">
+            <button
+              class="btn-primary-outline h-10 px-6 rounded-full flex items-center space-x-2"
+            >
+              <span class="material-symbols-outlined" style="color: #2a8420"
+                >download</span
+              >
+              <p class="text-primary">Download Template</p>
+            </button>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <p>Upload the filled spreadsheet for bulk upload</p>
+            <div
+              class="w-full h-56 border rounded-md flex flex-col items-center justify-between p-4"
+            >
+              <span class="material-symbols-outlined text-4xl">
+                upload_file
+              </span>
+              <div class="flex flex-col items-center space-y-2">
+                <p>Drag and drop file</p>
+                <p>or</p>
+                <input type="file" id="file-input" class="hidden" multiple />
+                <label
+                  for="file-input"
+                  class="file-label text-primary flex flex-row text-sm items-center space-x-2"
+                >
+                  <span class="material-symbols-outlined">
+                    screen_search_desktop
+                  </span>
+
+                  <span>Choose File</span>
+                </label>
+                <div id="selected-files" class="selected-files text-xs"></div>
+              </div>
+
+              <p class="text-gray-500 text-xs">
+                Accepted file: Excel (.xlsx or .xls)
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div
+          class="flex items-center justify-end p-4 md:p-5 space-x-4 border-t border-gray-200 rounded-b dark:border-gray-600"
+        >
+          <button
+            data-modal-hide="bulk-upload-modal"
+            type="button"
+            class="py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+          >
+            Cancel
+          </button>
+          <button
+            data-modal-hide="bulk-upload-modal"
+            type="button"
+            style="background-color: #2a8420"
+            class="text-white hover:opacity-70 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- end bulk upload modal -->
+
+    <!-- add new product modal -->
+    <div
+      id="add-new-product-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <!-- Modal content -->
+        <form class="relative">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Add New Product
+            </h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="add-new-product-modal"
+            >
+              <span class="material-symbols-outlined"> close </span>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+
+          <div class="w-full p-4 md:p-5 flex flex-col space-y-10">
+            <div class="flex flex-col w-full items-center">
+              <div
+                class="w-full flex flex-row justify-between items-center relative"
+              >
+                <div class="w-[20%] z-10 flex items-center justify-center">
+                  <div
+                    class="border-2 w-8 h-8 p-1 bg-white border-primary rounded-full flex items-center justify-center"
+                  >
+                    <span class="text-primary">1</span>
+                  </div>
+                </div>
+                <div
+                  class="absolute z-0 w-full flex items-center justify-center"
+                >
+                  <div id="stepper-line" class="h-1 w-[80%] bg-gray-200"></div>
+                </div>
+                <div class="w-[20%] z-10 flex items-center justify-center">
+                  <div
+                    class="stepper-end border-2 w-8 h-8 bg-white p-1 rounded-full flex items-center justify-center"
+                  >
+                    <span>2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full flex justify-between">
+                <p class="font-semibold text-primary">Select Product Type</p>
+                <p class="stepper-end font-semibold text-gray-400">
+                  Sales Information
+                </p>
+              </div>
+            </div>
+
+            <!-- form -->
+            <div class="flex flex-col space-y-6 step" id="step1">
+              <div class="input-group">
+                <label class="input-label">Product Category </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a category</option>
+                  <option value="Men’s health">Men’s health</option>
+                  <option value="Women’s health">Women’s health</option>
+                  <option value="Mom and baby">Mom and baby</option>
+                  <option value="Supplements">Supplements</option>
+                  <option value="OTC">OTC</option>
+                  <option value="Prescriptions">Prescriptions</option>
+                  <option value="Pain relief ">Pain relief</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-label">Product Name/Code </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="Select a product name or code">
+                    Select a product name or code
+                  </option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-label">Brand Name </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a brand name</option>
+                  <option value="Panadol">Panadol</option>
+                  <option value="Emzor">Emzor</option>
+                  <option value="Pfizer">Pfizer</option>
+                </select>
+                <div class="flex flex-row space-x-2 items-center">
+                  <input type="checkbox" class="rounded-md accent-primary" />
+                  <span>This product does not have a brand name</span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label">Dosage Form </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a dosage form</option>
+                  <option value="Liquid dosage">Liquid dosage</option>
+                  <option value="Drop">Drop</option>
+                  <option value="Suppository">Suppository</option>
+                  <option value="Tablet">Tablet</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex flex-col space-y-6 step" id="step2">
+              <div class="input-group">
+                <label class="input-label">Enter Amount in Stock </label>
+                <input
+                  type="text"
+                  class="text-input rounded-lg"
+                  placeholder="E.g. 1000"
+                />
+              </div>
+              <div
+                class="w-full h-12 border flex flex-row space-x-2 items-center px-2 justify-between relative rounded-md"
+              >
+                <div class="w-[10%]">
+                  <p>USD$</p>
+                </div>
+                <div class="w-[90%]">
+                  <label class="input-label">Enter Price</label>
+                  <input
+                    type="text"
+                    class="w-full outline-none border-0 ring-0"
+                    placeholder="E.g. 1000"
+                  />
+                </div>
+              </div>
+              <div class="input-group">
+                <label class="input-label">Mode of Fulfilment </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a fulfilment method</option>
+                  <option value="Pharmacy pickup">Pharmacy pickup</option>
+                  <option value="Home delivery">Home delivery</option>
+                </select>
+              </div>
+            </div>
+            <!-- end form -->
+          </div>
+          <!-- Modal footer -->
+          <div
+            class="flex items-center justify-end p-4 md:p-5 space-x-4 border-t border-gray-200 rounded-b dark:border-gray-600"
+          >
+            <button
+              data-modal-hide="add-new-product-modal"
+              type="button"
+              onclick="alert('Saving to draft')"
+              class="py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            >
+              Save to Draft
+            </button>
+            <button
+              type="button"
+              style="background-color: #2a8420"
+              class="text-white hover:opacity-70 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+              id="continueBtn"
+            >
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end add new product modal -->
+
+    <!-- edit product modal -->
+    <div
+      id="edit-product-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <!-- Modal content -->
+        <form class="relative">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Edit Product
+            </h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="edit-product-modal"
+            >
+              <span class="material-symbols-outlined"> close </span>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+
+          <div class="w-full p-4 md:p-5 flex flex-col space-y-10">
+            <div class="flex flex-col w-full items-center">
+              <div
+                class="w-full flex flex-row justify-between items-center relative"
+              >
+                <div class="w-[20%] z-10 flex items-center justify-center">
+                  <div
+                    class="border-2 w-8 h-8 p-1 bg-white border-primary rounded-full flex items-center justify-center"
+                  >
+                    <span class="text-primary">1</span>
+                  </div>
+                </div>
+                <div
+                  class="absolute z-0 w-full flex items-center justify-center"
+                >
+                  <div
+                    id="edit-stepper-line"
+                    class="h-1 w-[80%] bg-gray-200"
+                  ></div>
+                </div>
+                <div class="w-[20%] z-10 flex items-center justify-center">
+                  <div
+                    class="edit-stepper-end border-2 w-8 h-8 bg-white p-1 rounded-full flex items-center justify-center"
+                  >
+                    <span>2</span>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full flex justify-between">
+                <p class="font-semibold text-primary">Select Product Type</p>
+                <p class="stepper-end font-semibold text-gray-400">
+                  Sales Information
+                </p>
+              </div>
+            </div>
+
+            <!-- form -->
+            <div class="flex flex-col space-y-6 edit-step" id="editStep1">
+              <div class="input-group">
+                <label class="input-label">Product Category </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a category</option>
+                  <option value="Men’s health">Men’s health</option>
+                  <option value="Women’s health">Women’s health</option>
+                  <option value="Mom and baby">Mom and baby</option>
+                  <option value="Supplements">Supplements</option>
+                  <option value="OTC">OTC</option>
+                  <option value="Prescriptions">Prescriptions</option>
+                  <option value="Pain relief ">Pain relief</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-label">Product Name/Code </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="Select a product name or code">
+                    Select a product name or code
+                  </option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-label">Brand Name </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a brand name</option>
+                  <option value="Panadol">Panadol</option>
+                  <option value="Emzor">Emzor</option>
+                  <option value="Pfizer">Pfizer</option>
+                </select>
+                <div class="flex flex-row space-x-2 items-center">
+                  <input type="checkbox" class="rounded-md accent-primary" />
+                  <span>This product does not have a brand name</span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label class="input-label">Dosage Form </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a dosage form</option>
+                  <option value="Liquid dosage">Liquid dosage</option>
+                  <option value="Drop">Drop</option>
+                  <option value="Suppository">Suppository</option>
+                  <option value="Tablet">Tablet</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex flex-col space-y-6 edit-step" id="editStep2">
+              <div class="input-group">
+                <label class="input-label">Enter Amount in Stock </label>
+                <input
+                  type="text"
+                  class="text-input rounded-lg"
+                  value="1000"
+                  placeholder="E.g. 1000"
+                />
+              </div>
+              <div
+                class="w-full h-12 border flex flex-row space-x-2 items-center px-2 justify-between relative rounded-md"
+              >
+                <div class="w-[10%]">
+                  <p>USD$</p>
+                </div>
+                <div class="w-[90%]">
+                  <label class="input-label">Enter Price</label>
+                  <input
+                    type="text"
+                    class="w-full outline-none border-0 ring-0"
+                    value="32.00"
+                    placeholder="E.g. 1000"
+                  />
+                </div>
+              </div>
+              <div class="input-group">
+                <label class="input-label">Mode of Fulfilment </label>
+                <select name="" id="" class="text-input rounded-lg">
+                  <option value="">Select a fulfilment method</option>
+                  <option value="Pharmacy pickup">Pharmacy pickup</option>
+                  <option value="Home delivery">Home delivery</option>
+                </select>
+              </div>
+            </div>
+            <!-- end form -->
+          </div>
+          <!-- Modal footer -->
+          <div
+            class="flex items-center justify-end p-4 md:p-5 space-x-4 border-t border-gray-200 rounded-b dark:border-gray-600"
+          >
+            <button
+              data-modal-hide="edit-product-modal"
+              type="button"
+              onclick="alert('Saving to draft')"
+              class="py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            >
+              Save to Draft
+            </button>
+            <button
+              type="button"
+              style="background-color: #2a8420"
+              class="text-white hover:opacity-70 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+              id="editContinueBtn"
+            >
+              Continue
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end edit product modal -->
+
+    <!-- delete product modal -->
+    <div
+      id="delete-product-modal"
+      tabindex="-1"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button
+            type="button"
+            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-hide="delete-product-modal"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="p-4 md:p-5 text-start flex flex-col space-y-4">
+            <div class="flex flex-col space-y-2">
+              <p class="text-lg font-semibold">
+                Are you sure you want to delete?
+              </p>
+              <p>Selected items will be permanently deleted</p>
+            </div>
+
+            <div class="flex flex-row justify-end items-center space-x-4">
+              <button
+                data-modal-hide="delete-product-modal"
+                type="button"
+                class="text-primary"
+              >
+                No, Cancel
+              </button>
+              <button
+                data-modal-hide="delete-product-modal"
+                id="delete-product"
+                type="button"
+                class="text-red-600"
+              >
+                Yes, Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end delete product modal -->
+
+    <!-- message modals  -->
+    <!-- read message modal -->
+    <div
+      id="read-message-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative p-4 w-full max-w-md h-[90%]">
+        <!-- Modal content -->
+        <div
+          class="relative bg-white rounded-lg h-full shadow dark:bg-gray-700"
+        >
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between h-[10%] p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Messages
+            </h3>
+
+            <div class="flex flex-row items-center space-x-2">
+              <button
+                data-modal-hide="read-message-modal"
+                data-modal-target="main-message-modal"
+                data-modal-toggle="main-message-modal"
+                data-tab="read-message-tab"
+                title="Expand"
+                class="tab-message-button end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto hidden lg:flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                <span class="material-symbols-outlined text-md">
+                  open_in_full
+                </span>
+              </button>
+              <button
+                type="button"
+                title="Close"
+                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="read-message-modal"
+              >
+                <span class="material-symbols-outlined"> close </span>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+          </div>
+          <!-- Modal body -->
+          <div
+            class="p-2 flex flex-col space-y-4 h-[80%] overflow-y-auto no-scrollbar"
+          >
+            <div class="flex flex-col space-y-2">
+              <div class="w-full flex justify-center">
+                <p class="font-bold">01/10/23</p>
+              </div>
+
+              <div class="w-full flex justify-start">
+                <div class="w-[80%] flex flex-row items-end space-x-1">
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/2.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Lorem ipsum dolor sit</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full flex justify-end items-end">
+                <div
+                  class="w-[80%] flex flex-row items-end justify-end space-x-1"
+                >
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hi</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hello</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/pharmacy.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col space-y-2">
+              <div class="w-full flex justify-center">
+                <p class="font-bold">02/10/23</p>
+              </div>
+
+              <div class="w-full flex justify-start">
+                <div class="w-[80%] flex flex-row items-end space-x-1">
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/2.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>I want to inquire about an OTC</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>
+                        What other brand of paracetamol do you have apart from
+                        Emzor?
+                      </p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full flex justify-end items-end">
+                <div
+                  class="w-[80%] flex flex-row items-end justify-end space-x-1"
+                >
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hi</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hello</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/pharmacy.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer -->
+          <div class="h-[10%] w-full flex flex-row items-center p-2 space-x-1">
+            <div class="w-[10%]">
+              <button
+                class="w-fit h-fit flex items-center justify-center p-2 border rounded-full"
+              >
+                <span class="material-symbols-outlined"> add </span>
+              </button>
+            </div>
+            <div class="w-[80%] px-1">
+              <div
+                class="w-full h-12 border rounded-md flex flex-row items-center"
+              >
+                <input
+                  type="text"
+                  class="w-[90%] h-full border-0 outline-none ring-0 rounded-md"
+                />
+                <div class="w-[10%]">
+                  <span class="material-symbols-outlined"> mood </span>
+                </div>
+              </div>
+            </div>
+            <div class="w-[10%]">
+              <button class="">
+                <span class="material-symbols-outlined"> send </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end read message mdoal -->
+    <!-- main messages modal -->
+    <div
+      id="main-message-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-screen md:inset-0 h-screen"
+    >
+      <div class="relative p-4 h-[90%] w-[90%]">
+        <!-- Modal content -->
+        <div
+          class="relative h-full bg-white rounded-lg shadow dark:bg-gray-700"
+        >
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between h-[10%] p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <div class="flex flex-col space-y-2">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Messages
+              </h3>
+              <div class="flex flex-row justify-between">
+                <div class="bg-secondary rounded-md py-1 px-3">
+                  <p class="font-bold text-xs">4 Unread</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button
+                data-modal-hide="main-message-modal"
+                data-modal-target="read-message-modal"
+                data-modal-toggle="read-message-modal"
+                title="Close Full Screen"
+                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                <span class="material-symbols-outlined text-md">
+                  close_fullscreen
+                </span>
+              </button>
+              <button
+                type="button"
+                title="Close"
+                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="main-message-modal"
+              >
+                <span class="material-symbols-outlined"> close </span>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+          </div>
+          <!-- Modal body -->
+          <div class="p-2 space-y-4 h-[85%] flex flex-row">
+            <div
+              class="w-[30%] border-r flex flex-col space-y-3 overflow-y-auto no-scrollbar px-2"
+            >
+              <!-- message item card -->
+              <div
+                data-tab="read-message-tab"
+                class="tab-message-button h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+              >
+                <div class="w-[20%]">
+                  <div
+                    class="w-14 h-14 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      src="./../assets/images/avatar/2.png"
+                      class="w-full h-full object-cover"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="w-[60%] flex flex-col space-y-1 items-start">
+                  <p class="font-semibold">Khalid</p>
+                  <p class="line-clamp-1">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Rem suscipit ipsam, optio dolores dolor aperiam hic
+                    deserunt, ipsa quo, nesciunt aut non possimus nulla ipsum.
+                    Molestiae, nihil. Aperiam, explicabo qui.
+                  </p>
+                </div>
+                <div class="w-[20%] flex flex-col space-y-2 items-end">
+                  <span>12:10pm</span>
+                  <span
+                    class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                  >
+                    <p class="text-white text-xs">5</p>
+                  </span>
+                </div>
+              </div>
+              <!-- end message item card -->
+
+              <!-- message item card -->
+              <div
+                class="h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+              >
+                <div class="w-[20%]">
+                  <div
+                    class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center"
+                  >
+                    <p class="text-primary">H</p>
+                  </div>
+                </div>
+                <div class="w-[60%] flex flex-col space-y-1 items-start">
+                  <p class="font-semibold">Helen T.</p>
+                  <p class="line-clamp-1">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Rem suscipit ipsam, optio dolores dolor aperiam hic
+                    deserunt, ipsa quo, nesciunt aut non possimus nulla ipsum.
+                    Molestiae, nihil. Aperiam, explicabo qui.
+                  </p>
+                </div>
+                <div class="w-[20%] flex flex-col space-y-2 items-end">
+                  <span>12:10pm</span>
+                  <span
+                    class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                  >
+                    <p class="text-white text-xs">5</p>
+                  </span>
+                </div>
+              </div>
+              <!-- end message item card -->
+            </div>
+            <div class="w-[70%] flex flex-col">
+              <!-- start chatting card, close when messages is displayed -->
+              <div
+                id="start-chatting-tab"
+                class="tab-message-content active w-full h-full flex items-center justify-center"
+              >
+                <p class="text-lg">Start chatting!</p>
+              </div>
+              <!-- end start chatting card -->
+
+              <!-- chats tab -->
+              <div
+                id="read-message-tab"
+                class="tab-message-content hidden flex-col h-full"
+              >
+                <!-- Modal body -->
+                <div
+                  class="p-2 flex flex-col space-y-4 h-[90%] overflow-y-auto no-scrollbar"
+                >
+                  <div class="w-full flex flex-col space-y-2">
+                    <div class="w-full flex justify-center">
+                      <p class="font-bold">01/10/23</p>
+                    </div>
+
+                    <div class="w-full flex justify-start">
+                      <div class="w-[80%] flex flex-row items-end space-x-1">
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/2.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Lorem ipsum dolor sit</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-full flex justify-end items-end">
+                      <div
+                        class="w-[80%] flex flex-row items-end justify-end space-x-1"
+                      >
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hi</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hello</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/pharmacy.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="w-full flex flex-col space-y-2">
+                    <div class="w-full flex justify-center">
+                      <p class="font-bold">02/10/23</p>
+                    </div>
+
+                    <div class="w-full flex justify-start">
+                      <div class="w-[80%] flex flex-row items-end space-x-1">
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/2.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>I want to inquire about an OTC</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>
+                              What other brand of paracetamol do you have apart
+                              from Emzor?
+                            </p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-full flex justify-end items-end">
+                      <div
+                        class="w-[100%] flex flex-row items-end justify-end space-x-1"
+                      >
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hi</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hello</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/pharmacy.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- footer -->
+                <div
+                  class="h-[10%] w-full flex flex-row items-center p-2 space-x-1"
+                >
+                  <div class="w-[5%]">
+                    <button
+                      class="w-fit h-fit flex items-center justify-center p-2 border rounded-full"
+                    >
+                      <span class="material-symbols-outlined"> add </span>
+                    </button>
+                  </div>
+                  <div class="w-[90%] px-1">
+                    <div
+                      class="w-full h-12 border rounded-md flex flex-row items-center"
+                    >
+                      <input
+                        type="text"
+                        class="w-[90%] h-full border-0 outline-none ring-0 rounded-md"
+                      />
+                      <div class="w-[10%]">
+                        <span class="material-symbols-outlined"> mood </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-[5%]">
+                    <button class="">
+                      <span class="material-symbols-outlined"> send </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- end chats tab -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end main message modal -->
+    <!-- end message modals -->
+
+    <!-- toasts -->
+    <div
+      id="delete-toast-undo"
+      class="hidden fixed top-5 right-2 items-center w-full max-w-xs p-4 rounded-lg shadow text-gray-400 bg-gray-800"
+      role="alert"
+    >
+      <div class="text-sm font-normal">
+        The item(s) has been disabled and added to the Disabled Drugs section.
+      </div>
+      <div class="flex items-center ms-auto space-x-2 rtl:space-x-reverse">
+        <a
+          class="text-sm font-medium text-blue-600 p-1.5 hover:bg-blue-100 rounded-lg dark:text-blue-500 dark:hover:bg-gray-700"
+          href="#"
+          >Undo</a
+        >
+        <button
+          type="button"
+          class="ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 inline-flex items-center justify-center h-8 w-8 text-gray-500"
+          data-dismiss-target="#delete-toast-undo"
+          aria-label="Close"
+        >
+          <span class="sr-only">Close</span>
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+      </div>
+    </div>
+    <!-- end toast -->
+
+    <script src="./../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="./../assets/js/pharmacy/product.js"></script>
+    <script src="./../assets/js/main.js"></script>
+    <script src="./../assets/js/pharmacy.js"></script>
+  </body>
+</html>

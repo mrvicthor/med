@@ -1,0 +1,71 @@
+/* Fieldset-like input component CSS */
+.custom-input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.custom-label {
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.themain {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Style for the input */
+.custom-input {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
+}
+
+/* Style for the label */
+.custom-label {
+    font-weight: bold;
+    position: absolute;
+    top: -10px;
+    /* Adjust this value to control label positioning */
+    left: 10px;
+    /* Adjust this value to control label positioning */
+    background-color: white;
+    /* Ensure label background matches the input background */
+    padding: 0 5px;
+    /* Adjust padding to match input padding */
+}
+
+header {
+ 
+        height: 10vh;
+        width: 100%;
+        background-color: white;
+        border-bottom: 1px solid #90849E;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Equivalent to drop-shadow-xl */
+        padding: 0.5rem; /* Equivalent to px-2 */
+    }
+    
+    @media (min-width: 768px) {
+        .container {
+            padding: 1.5rem; /* Equivalent to md:px-6 */
+        }
+    }
+    
+    @media (min-width: 1280px) {
+        .container {
+            padding: 2.5rem; }}
+        

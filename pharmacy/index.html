@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Medic</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="./../assets/css/main.css" />
+    <link rel="stylesheet" href="./../assets/css/table.css" />
+    <script src="./../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="w-screen h-screen bg-[#fef7ff] flex flex-col">
+    <!-- top nav bar -->
+    <header
+      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 flex flex-row justify-between items-center drop-shadow-xl px-2 lg:px-8 py-2"
+    >
+      <div class="h-full flex flex-row items-center space-x-2">
+        <button
+          class="flex lg:hidden"
+          type="button"
+          data-drawer-target="mobile-drawer"
+          data-drawer-show="mobile-drawer"
+          aria-controls="mobile-drawer"
+        >
+          <span class="material-symbols-outlined"> menu </span>
+        </button>
+        <div class="flex flex-row items-center space-x-2">
+          <a class="w-16 md:w-20 h-16 md:h-20 flex items-center justify-center">
+            <img
+              src="./../assets/images/logos/logo.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+          <div
+            class="mx-3 md:px-4 md:py-1 bg-primary/20 text-primary rounded-md"
+          >
+            <p class="font-extralight text-[10px] lg:text-[xs]">
+              Pharmacy Center
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <form
+        action="/search.html"
+        method="get"
+        class="hidden lg:flex h-full w-[49%] bg-gray-200 dark:bg-slate-800 rounded-full p-2 items-center"
+      >
+        <input
+          type="text"
+          name="q"
+          class="h-full w-[90%] outline-none bg-transparent border-0 rounded-full px-1"
+        />
+        <div class="w-[10%] h-full flex items-center justify-center">
+          <span class="material-symbols-outlined">search</span>
+        </div>
+      </form>
+      <div class="flex flex-row items-center space-x-8 relative">
+        <div class="flex flex-row items-center space-x-6">
+          <button
+            title="Messages"
+            id="messagesDropDown"
+            data-dropdown-toggle="messages-dropdown"
+          >
+            <div class="relative">
+              <span class="material-symbols-outlined text-base md:text-xl"
+                >chat</span
+              >
+              <div
+                class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+              >
+                <p class="text-white text-[10px] md:text-xs">1</p>
+              </div>
+            </div>
+            <div
+              id="messages-dropdown"
+              class="z-50 hidden w-[400px] h-[70vh] p-2"
+            >
+              <div
+                class="bg-white divide-y divide-gray-100 flex flex-col space-y-2 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
+              >
+                <div class="flex h-[15%] bg-white flex-col space-y-4 relative">
+                  <div class="w-full relative flex justify-start items-center">
+                    <p class="text-lg font-semibold">Messages</p>
+                    <div class="absolute right-0 flex flex-row space-x-2">
+                      <div
+                        data-modal-target="main-message-modal"
+                        data-modal-toggle="main-message-modal"
+                        data-tab="start-chatting-tab"
+                        title="Expand"
+                        class="tab-message-button end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto hidden lg:flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <span class="material-symbols-outlined text-md">
+                          open_in_full
+                        </span>
+                      </div>
+                      <div
+                        data-modal-hide="messages-dropdown"
+                        title="Close"
+                        class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                      >
+                        <span class="material-symbols-outlined text-md">
+                          close
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-between">
+                    <div class="bg-secondary rounded-md py-1 px-3">
+                      <p class="font-bold text-xs">4 Unread</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
+                >
+                  <!-- message item card -->
+                  <div
+                    data-modal-target="read-message-modal"
+                    data-modal-toggle="read-message-modal"
+                    class="h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+                  >
+                    <div class="w-[20%]">
+                      <div
+                        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <img
+                          src="./../assets/images/avatar/2.png"
+                          class="w-full h-full object-cover"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[60%] flex flex-col space-y-1 items-start">
+                      <p class="font-semibold">Khalid</p>
+                      <p class="line-clamp-1">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Rem suscipit ipsam, optio dolores dolor aperiam
+                        hic deserunt, ipsa quo, nesciunt aut non possimus nulla
+                        ipsum. Molestiae, nihil. Aperiam, explicabo qui.
+                      </p>
+                    </div>
+                    <div class="w-[20%] flex flex-col space-y-2 items-end">
+                      <span>12:10pm</span>
+                      <span
+                        class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                      >
+                        <p class="text-white text-xs">5</p>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- end message item card -->
+
+                  <!-- message item card -->
+                  <div
+                    data-modal-target="read-message-modal"
+                    data-modal-toggle="read-message-modal"
+                    class="h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+                  >
+                    <div class="w-[20%]">
+                      <div
+                        class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center"
+                      >
+                        <p class="text-primary">H</p>
+                      </div>
+                    </div>
+                    <div class="w-[60%] flex flex-col space-y-1 items-start">
+                      <p class="font-semibold">Helen T.</p>
+                      <p class="line-clamp-1">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Rem suscipit ipsam, optio dolores dolor aperiam
+                        hic deserunt, ipsa quo, nesciunt aut non possimus nulla
+                        ipsum. Molestiae, nihil. Aperiam, explicabo qui.
+                      </p>
+                    </div>
+                    <div class="w-[20%] flex flex-col space-y-2 items-end">
+                      <span>12:10pm</span>
+                      <span
+                        class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                      >
+                        <p class="text-white text-xs">5</p>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- end message item card -->
+                </div>
+              </div>
+            </div>
+          </button>
+          <button
+            title="Notifications"
+            id="notificationDropDown"
+            data-dropdown-toggle="notification-dropdown"
+            aria-label="profile link"
+            data-dropdown-placement="top"
+          >
+            <div class="relative">
+              <span class="material-symbols-outlined text-base md:text-xl"
+                >notifications</span
+              >
+              <div
+                class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+              >
+                <p class="text-white text-[10px] md:text-xs">3</p>
+              </div>
+            </div>
+            <div
+              id="notification-dropdown"
+              class="z-50 hidden w-[400px] h-[70vh] p-2"
+            >
+              <div
+                class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
+              >
+                <div class="w-full h-full overflow-y-auto rounded-md">
+                  <div class="flex h-[15%] bg-white flex-col space-y-4">
+                    <div
+                      class="w-full relative flex justify-start items-center"
+                    >
+                      <p class="text-lg font-semibold">Notifications</p>
+                      <div
+                        aria-label="close login form button"
+                        class="absolute right-0"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined"> close </span>
+                      </div>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                      <div class="bg-secondary rounded-md py-1 px-3">
+                        <p class="font-bold text-xs">3 Unread</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
+                  >
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="w-full flex flex-row items-center justify-between"
+                      >
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        <div class="bg-secondary rounded-md py-1 px-2">
+                          <p class="text-xs">Today</p>
+                        </div>
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                      </div>
+                      <!-- notification ite, -->
+                      <div
+                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                      <!-- notification item -->
+                      <div
+                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                    </div>
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="w-full flex flex-row items-center justify-between"
+                      >
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        <div class="bg-secondary rounded-md py-1 px-2">
+                          <p class="text-xs">Yesterday</p>
+                        </div>
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                      </div>
+                      <!-- notification ite, -->
+                      <div
+                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                      <!-- notification item -->
+                      <div
+                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <button
+          id="accountDropDown"
+          data-dropdown-toggle="account-dropdown"
+          data-dropdown-placement="top"
+          aria-label="profile link"
+          class="flex flex-row space-x-2 items-center"
+        >
+          <div
+            class="w-10 h-10 bg-primary/30 rounded-full flex items-center justify-center relative"
+          >
+            <img
+              src="./../assets/images/avatar/pharmacy.png"
+              layout="fill"
+              objectFit="cover"
+              alt="Pharmacy"
+            />
+          </div>
+          <div class="hidden lg:flex flex-row items-center">
+            <p>Southwood Pharmacy</p>
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+          </div>
+
+          <div id="account-dropdown" class="z-10 hidden w-72 p-2">
+            <div
+              class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full shadow p-2 rounded-lg"
+            >
+              <div
+                class="w-full py-2 flex flex-col space-y-4 items-start border-b"
+              >
+                <div>
+                  <p class="text-[#49454F] font-bold">Welcome back!</p>
+                </div>
+                <a href="#" class="text-red-600 font-semibold"> Log out </a>
+              </div>
+              <div class="flex flex-col items-start space-y-3">
+                <a
+                  href="profile.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl">
+                    person_2
+                  </span>
+                  <p class="font-semibold text-[#49454F]">Profile</p>
+                </a>
+                <a
+                  href="orders.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl"
+                    >shopping_cart_checkout</span
+                  >
+                  <p class="font-semibold text-[#49454F]">Orders</p>
+                </a>
+                <a
+                  href="help.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl"> help </span>
+                  <p class="font-semibold text-[#49454F]">Help</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </header>
+    <!-- end top bar -->
+    <!-- main section -->
+    <main
+      class="w-full h-fit max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10"
+    >
+      <!-- navigation menu -->
+      <nav
+        class="lg:w-[20%] max-h-[90vh] h-fit hidden lg:flex flex-col space-y-10 bg-white overflow-y-auto pt-10"
+      >
+        <div class="flex flex-col space-y-2 px-8">
+          <div class="px-4">
+            <p class="font-semibold text-gray-300 text-uppercase">MAIN MENU</p>
+          </div>
+          <a href="./index.html" class="active-menu">
+            <span class="material-symbols-outlined text-2xl">dashboard</span>
+            <p class="">Dashboard</p>
+          </a>
+          <a href="./products.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">list</span>
+            <p class="">Products</p>
+          </a>
+          <a href="./orders.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">Orders</p>
+          </a>
+          <a href="./promotion.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">show_chart</span>
+            <p class="">Promotion</p>
+          </a>
+          <a href="./reports.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">insert_chart</span>
+            <p class="">Reports</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2 px-8">
+          <div class="px-4">
+            <p class="font-semibold text-gray-300 text-uppercase">OTHERS</p>
+          </div>
+          <a href="./settings.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2 px-8">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </nav>
+      <section
+        class="w-full lg:w-[75%] h-full rounded-md flex flex-col space-y-4 overflow-y-auto no-scrollbar py-2"
+      >
+        <div
+          class="w-full bg-white rounded-md p-4 flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-row items-center justify-between">
+            <p class="text-xl font-semibold">Dashboard</p>
+          </div>
+
+          <!-- stat cards -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+              class="h-28 w-full bg-secondary/70 rounded-md p-2 flex flex-col items-center justify-evenly"
+            >
+              <p class="font-light">Total Order</p>
+              <p class="text-2xl font-semibold">2210</p>
+            </div>
+            <div
+              class="h-28 w-full bg-secondary/70 rounded-md p-2 flex flex-col items-center justify-evenly"
+            >
+              <p class="font-light">Pending Order</p>
+              <p class="text-2xl font-semibold">6</p>
+            </div>
+            <div
+              class="h-28 w-full bg-secondary/70 rounded-md p-2 flex flex-col items-center justify-evenly"
+            >
+              <p class="font-light">Total Income</p>
+              <p class="text-2xl font-semibold">$683</p>
+            </div>
+            <div
+              class="h-28 w-full bg-secondary/70 rounded-md p-2 flex flex-col items-center justify-evenly"
+            >
+              <p class="font-light">Withdrawn</p>
+              <p class="text-2xl font-semibold">$2210</p>
+            </div>
+          </div>
+          <!-- recent order section -->
+          <div class="flex flex-col space-y-10">
+            <!-- orders -->
+            <div class="flex flex-col lg:flex-row mt-10 space-x-2">
+              <div class="flex flex-col space-y-2 w-full lg:w-[65%]">
+                <p class="text-lg">Recent Orders</p>
+                <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+                  <ul
+                    class="flex overflow-x-auto no-scrollbar -mb-px text-sm font-medium text-center"
+                    id="default-tab"
+                    data-tabs-toggle="#default-tab-content"
+                    data-tabs-active-classes="border-primary"
+                    role="tablist"
+                  >
+                    <li class="me-2" role="presentation">
+                      <button
+                        class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md"
+                        id="active-tab"
+                        data-tabs-target="#active"
+                        type="button"
+                        role="tab"
+                        aria-controls="active"
+                        aria-selected="false"
+                      >
+                        Active Orders
+                      </button>
+                    </li>
+                    <li class="me-2" role="presentation">
+                      <button
+                        class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="completed-tab"
+                        data-tabs-target="#completed"
+                        type="button"
+                        role="tab"
+                        aria-controls="completed"
+                        aria-selected="false"
+                      >
+                        Completed
+                      </button>
+                    </li>
+                    <li class="me-2" role="presentation">
+                      <button
+                        class="w-[250px] inline-block p-4 border-b-2 rounded-t-lg text-md hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        id="cancelled-tab"
+                        data-tabs-target="#cancelled"
+                        type="button"
+                        role="tab"
+                        aria-controls="cancelled"
+                        aria-selected="false"
+                      >
+                        Cancelled
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <div id="default-tab-content">
+                  <div
+                    class="hidden"
+                    id="active"
+                    role="tabpanel"
+                    aria-labelledby="active-tab"
+                  >
+                    <div class="overflow-x-auto rounded-lg">
+                      <table
+                        class="w-full text-sm text-left border-separate border-spacing-y-3"
+                      >
+                        <thead
+                          class="text-xs text-gray-700 uppercase bg-[#F3EDF7] dark:bg-gray-700 dark:text-gray-400 border my-10"
+                        >
+                          <tr class="my-10">
+                            <th scope="col" class="px-6 py-3">Buyer Name</th>
+                            <th scope="col" class="px-6 py-3">Order ID</th>
+                            <th scope="col" class="px-6 py-3">Date</th>
+                            <th scope="col" class="px-6 py-3">Drug</th>
+                            <th scope="col" class="px-6 py-3">Price</th>
+                            <th scope="col" class="px-6 py-3"></th>
+                          </tr>
+                        </thead>
+                        <tbody class="px-2">
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button
+                                type="button"
+                                data-modal-target="orderDetails"
+                                data-modal-show="orderDetails"
+                              >
+                                <span class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                          <tr
+                            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                          >
+                            <td class="px-6 py-4">Adam U.</td>
+                            <td class="px-6 py-4">111081</td>
+                            <td class="px-6 py-4">02/12/23</td>
+                            <td class="px-6 py-4">Aspirin 200mg</td>
+                            <td class="px-6 py-4">$11.23</td>
+                            <td>
+                              <button>
+                                <span
+                                  type="button"
+                                  data-modal-target="orderDetails"
+                                  data-modal-show="orderDetails"
+                                  class="material-symbols-outlined"
+                                  >chevron_right</span
+                                >
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div
+                    class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                    id="completed"
+                    role="tabpanel"
+                    aria-labelledby="completed-tab"
+                  ></div>
+                  <div
+                    class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+                    id="cancelled"
+                    role="tabpanel"
+                    aria-labelledby="cancelled-tab"
+                  ></div>
+                </div>
+
+                <div class="flex w-full items-center justify-end">
+                  <button class="text-primary">See all</button>
+                </div>
+              </div>
+
+              <!-- messages -->
+              <div
+                class="w-full lg:w-[40%] h-full border rounded-md flex flex-col p-2 space-y-6 overflow-y-auto no-scrollbar"
+              >
+                <div class="flex flex-row justify-between">
+                  <p>Recent Messages</p>
+                  <button
+                    aria-label="see more recent message button"
+                    class="text-primary"
+                  >
+                    See More
+                  </button>
+                </div>
+
+                <div class="flex flex-col space-y-2">
+                  <p class="font-semibold">Today</p>
+                  <a
+                    href="/messages"
+                    class="w-full min-h-20 border rounded-md p-2 flex flex-row items-center justify-between hover:bg-primary/20 hover:border-primary/20"
+                  >
+                    <div
+                      class="h-full w-[20%] flex items-center justify-center"
+                    >
+                      <div
+                        class="w-12 md:w-16 h-12 md:h-16 bg-primary rounded-full"
+                      >
+                        <image
+                          src="./../assets/images/avatar/1.png"
+                          class="w-full h-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[78%] flex flex-col space-y-2">
+                      <p class="truncate">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Voluptates nostrum reiciendis blanditiis nesciunt
+                        perspiciatis deleniti non. Tempore ab saepe tempora! Et,
+                        consectetur sit. Facere quaerat vero natus pariatur?
+                        Consequatur, dolorem!
+                      </p>
+                      <div class="flex flex-row justify-end">
+                        <p class="font-semibold text-xs">12:02 pm</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    href="/messages"
+                    class="w-full min-h-20 border rounded-md p-2 flex flex-row items-center justify-between hover:bg-primary/20 hover:border-primary/20"
+                  >
+                    <div
+                      class="h-full w-[20%] flex items-center justify-center"
+                    >
+                      <div
+                        class="w-12 md:w-16 h-12 md:h-16 bg-primary rounded-full"
+                      >
+                        <image
+                          src="./../assets/images/avatar/1.png"
+                          class="w-full h-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[78%] flex flex-col space-y-2">
+                      <p class="truncate">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Voluptates nostrum reiciendis blanditiis nesciunt
+                        perspiciatis deleniti non. Tempore ab saepe tempora! Et,
+                        consectetur sit. Facere quaerat vero natus pariatur?
+                        Consequatur, dolorem!
+                      </p>
+                      <div class="flex flex-row justify-end">
+                        <p class="font-semibold text-xs">12:02 pm</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="flex flex-col space-y-2">
+                  <p class="font-semibold">Yesterday</p>
+                  <a
+                    href="/messages"
+                    class="w-full min-h-20 border rounded-md p-2 flex flex-row items-center justify-between hover:bg-primary/20 hover:border-primary/20"
+                  >
+                    <div
+                      class="h-full w-[20%] flex items-center justify-center"
+                    >
+                      <div
+                        class="w-12 md:w-16 h-12 md:h-16 bg-primary rounded-full"
+                      >
+                        <image
+                          src="./../assets/images/avatar/1.png"
+                          class="w-full h-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[78%] flex flex-col space-y-2">
+                      <p class="truncate">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Voluptates nostrum reiciendis blanditiis nesciunt
+                        perspiciatis deleniti non. Tempore ab saepe tempora! Et,
+                        consectetur sit. Facere quaerat vero natus pariatur?
+                        Consequatur, dolorem!
+                      </p>
+                      <div class="flex flex-row justify-end">
+                        <p class="font-semibold text-xs">12:02 pm</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    href="/messages"
+                    class="w-full min-h-20 border rounded-md p-2 flex flex-row items-center justify-between hover:bg-primary/20 hover:border-primary/20"
+                  >
+                    <div
+                      class="h-full w-[20%] flex items-center justify-center"
+                    >
+                      <div
+                        class="w-12 md:w-16 h-12 md:h-16 bg-primary rounded-full"
+                      >
+                        <image
+                          src="./../assets/images/avatar/1.png"
+                          class="w-full h-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[78%] flex flex-col space-y-2">
+                      <p class="truncate">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Voluptates nostrum reiciendis blanditiis nesciunt
+                        perspiciatis deleniti non. Tempore ab saepe tempora! Et,
+                        consectetur sit. Facere quaerat vero natus pariatur?
+                        Consequatur, dolorem!
+                      </p>
+                      <div class="flex flex-row justify-end">
+                        <p class="font-semibold text-xs">12:02 pm</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    href="/messages"
+                    class="w-full min-h-20 border rounded-md p-2 flex flex-row items-center justify-between hover:bg-primary/20 hover:border-primary/20"
+                  >
+                    <div
+                      class="h-full w-[20%] flex items-center justify-center"
+                    >
+                      <div
+                        class="w-12 md:w-16 h-12 md:h-16 bg-primary rounded-full"
+                      >
+                        <image
+                          src="./../assets/images/avatar/1.png"
+                          class="w-full h-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[78%] flex flex-col space-y-2">
+                      <p class="truncate">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Voluptates nostrum reiciendis blanditiis nesciunt
+                        perspiciatis deleniti non. Tempore ab saepe tempora! Et,
+                        consectetur sit. Facere quaerat vero natus pariatur?
+                        Consequatur, dolorem!
+                      </p>
+                      <div class="flex flex-row justify-end">
+                        <p class="font-semibold text-xs">12:02 pm</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    href="/messages"
+                    class="w-full min-h-20 border rounded-md p-2 flex flex-row items-center justify-between hover:bg-primary/20 hover:border-primary/20"
+                  >
+                    <div
+                      class="h-full w-[20%] flex items-center justify-center"
+                    >
+                      <div
+                        class="w-12 md:w-16 h-12 md:h-16 bg-primary rounded-full"
+                      >
+                        <image
+                          src="./../assets/images/avatar/1.png"
+                          class="w-full h-full rounded-full"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div class="w-[78%] flex flex-col space-y-2">
+                      <p class="truncate">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Voluptates nostrum reiciendis blanditiis nesciunt
+                        perspiciatis deleniti non. Tempore ab saepe tempora! Et,
+                        consectetur sit. Facere quaerat vero natus pariatur?
+                        Consequatur, dolorem!
+                      </p>
+                      <div class="flex flex-row justify-end">
+                        <p class="font-semibold text-xs">12:02 pm</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="h-[70vh] w-full flex flex-col">
+              <div class="w-full flex items-center justify-end">
+                <select class="border rounded-md p-2 bg-inherit">
+                  <option value="This Year ">This Year</option>
+                  <option value="This Month ">This Month</option>
+                  <option value="Last Month ">Last Month</option>
+                  <option value="Last 90 Dys">Last 90 Dys</option>
+                </select>
+              </div>
+              <div class="w-full h-full">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- order details modal -->
+    <div
+      id="orderDetails"
+      tabindex="-1"
+      aria-hidden="true"
+      class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-screen h-[100vh] p-4 md:inset-0"
+    >
+      <!-- Modal content -->
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] lg:max-h-[90%] mx-auto rounded-lg flex flex-col p-2 lg:p-10 overflow-y-auto no-scrollbar"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">Order Details</p>
+            <button
+              type="button"
+              data-modal-hide="orderDetails"
+              class="modal-close focus:outline-none"
+            >
+              <span class="material-symbols-outlined hover:bg-gray-100 p-1"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-10">
+                <div class="flex flex-col space-y-5">
+                  <div class="input-group">
+                    <label class="input-label">Order ID </label>
+                    <input
+                      readonly
+                      type="text"
+                      class="text-input"
+                      value="111081"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Buyer Name </label>
+                    <input
+                      readonly
+                      type="text"
+                      class="text-input"
+                      value="Adam Usman"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Product </label>
+                    <input
+                      readonly
+                      type="text"
+                      class="text-input rounded-lg"
+                      value="Paracetamol 500mg tablet"
+                    />
+                  </div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="input-group">
+                      <label class="input-label">Quantity </label>
+                      <input
+                        readonly
+                        type="text"
+                        class="text-input"
+                        value="2"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Price </label>
+                      <input
+                        readonly
+                        type="text"
+                        class="text-input"
+                        value="USD$ 32.00"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Order Date </label>
+                      <input
+                        readonly
+                        type="date"
+                        class="text-input"
+                        value="2024-04-18"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Time </label>
+                      <input
+                        readonly
+                        type="time"
+                        class="text-input"
+                        value="14:03"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Status </label>
+                      <input
+                        readonly
+                        type="text"
+                        class="text-input"
+                        value="Pending"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Updated </label>
+                      <input
+                        readonly
+                        type="date"
+                        class="text-input"
+                        value="2:03pm"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end order details modal -->
+
+    <!-- drawer component -->
+    <div
+      id="mobile-drawer"
+      class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 dark:bg-gray-800"
+      tabindex="-1"
+      aria-labelledby="mobile-drawer-label"
+    >
+      <div class="flex flex-row space-x-2 border-b">
+        <button
+          type="button"
+          data-drawer-hide="mobile-drawer"
+          aria-controls="mobile-drawer"
+        >
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+        <div class="flex flex-row items-center space-x-2">
+          <a class="w-16 h-10 flex items-center justify-center">
+            <img
+              src="./../assets/images/logos/logo.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+          <div
+            class="mx-3 md:px-4 md:py-1 bg-primary/20 text-primary rounded-md"
+          >
+            <p class="font-extralight text-[10px] lg:text-[xs]">
+              Pharmacy Center
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 overflow-y-auto no-scrollbar">
+        <div class="flex flex-col space-y-2">
+          <div class="">
+            <p class="font-semibold text-gray-300 text-uppercase">MAIN MENU</p>
+          </div>
+          <a
+            href="./index.html"
+            class="bg-primary/10 flex flex-row items-center py-2 px-2 space-x-2 rounded-full cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >dashboard</span
+            >
+            <p class="text-primary">Dashboard</p>
+          </a>
+          <a href="./products.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">list</span>
+            <p class="">Products</p>
+          </a>
+          <a href="./orders.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">Orders</p>
+          </a>
+          <a href="./promotion.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">show_chart</span>
+            <p class="">Promotion</p>
+          </a>
+          <a href="./reports.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">insert_chart</span>
+            <p class="">Reports</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <div class="">
+            <p class="font-semibold text-gray-300 text-uppercase">OTHERS</p>
+          </div>
+          <a href="./settings.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- end drawer component -->
+
+    <!-- message modals  -->
+    <!-- read message modal -->
+    <div
+      id="read-message-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative p-4 w-full max-w-md h-[90%]">
+        <!-- Modal content -->
+        <div
+          class="relative bg-white rounded-lg h-full shadow dark:bg-gray-700"
+        >
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between h-[10%] p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Messages
+            </h3>
+
+            <div class="flex flex-row items-center space-x-2">
+              <button
+                data-modal-hide="read-message-modal"
+                data-modal-target="main-message-modal"
+                data-modal-toggle="main-message-modal"
+                data-tab="read-message-tab"
+                title="Expand"
+                class="tab-message-button end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto hidden lg:flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                <span class="material-symbols-outlined text-md">
+                  open_in_full
+                </span>
+              </button>
+              <button
+                type="button"
+                title="Close"
+                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="read-message-modal"
+              >
+                <span class="material-symbols-outlined"> close </span>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+          </div>
+          <!-- Modal body -->
+          <div
+            class="p-2 flex flex-col space-y-4 h-[80%] overflow-y-auto no-scrollbar"
+          >
+            <div class="flex flex-col space-y-2">
+              <div class="w-full flex justify-center">
+                <p class="font-bold">01/10/23</p>
+              </div>
+
+              <div class="w-full flex justify-start">
+                <div class="w-[80%] flex flex-row items-end space-x-1">
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/2.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Lorem ipsum dolor sit</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full flex justify-end items-end">
+                <div
+                  class="w-[80%] flex flex-row items-end justify-end space-x-1"
+                >
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hi</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hello</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/pharmacy.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col space-y-2">
+              <div class="w-full flex justify-center">
+                <p class="font-bold">02/10/23</p>
+              </div>
+
+              <div class="w-full flex justify-start">
+                <div class="w-[80%] flex flex-row items-end space-x-1">
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/2.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>I want to inquire about an OTC</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>
+                        What other brand of paracetamol do you have apart from
+                        Emzor?
+                      </p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="w-full flex justify-end items-end">
+                <div
+                  class="w-[80%] flex flex-row items-end justify-end space-x-1"
+                >
+                  <div class="flex flex-col space-y-2">
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hi</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                    <div
+                      class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                    >
+                      <p>Hello</p>
+                      <div class="w-full flex justify-end">
+                        <span class="text-xs text-gray-500">08:01 pm</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-[20%]">
+                    <div
+                      class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./../assets/images/avatar/pharmacy.png"
+                        class="w-full h-full object-cover"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- footer -->
+          <div class="h-[10%] w-full flex flex-row items-center p-2 space-x-1">
+            <div class="w-[10%]">
+              <button
+                class="w-fit h-fit flex items-center justify-center p-2 border rounded-full"
+              >
+                <span class="material-symbols-outlined"> add </span>
+              </button>
+            </div>
+            <div class="w-[80%] px-1">
+              <div
+                class="w-full h-12 border rounded-md flex flex-row items-center"
+              >
+                <input
+                  type="text"
+                  class="w-[90%] h-full border-0 outline-none ring-0 rounded-md"
+                />
+                <div class="w-[10%]">
+                  <span class="material-symbols-outlined"> mood </span>
+                </div>
+              </div>
+            </div>
+            <div class="w-[10%]">
+              <button class="">
+                <span class="material-symbols-outlined"> send </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end read message mdoal -->
+    <!-- main messages modal -->
+    <div
+      id="main-message-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-screen md:inset-0 h-screen"
+    >
+      <div class="relative p-4 h-[90%] w-[90%]">
+        <!-- Modal content -->
+        <div
+          class="relative h-full bg-white rounded-lg shadow dark:bg-gray-700"
+        >
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between h-[10%] p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <div class="flex flex-col space-y-2">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                Messages
+              </h3>
+              <div class="flex flex-row justify-between">
+                <div class="bg-secondary rounded-md py-1 px-3">
+                  <p class="font-bold text-xs">4 Unread</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button
+                data-modal-hide="main-message-modal"
+                data-modal-target="read-message-modal"
+                data-modal-toggle="read-message-modal"
+                title="Close Full Screen"
+                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              >
+                <span class="material-symbols-outlined text-md">
+                  close_fullscreen
+                </span>
+              </button>
+              <button
+                type="button"
+                title="Close"
+                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                data-modal-hide="main-message-modal"
+              >
+                <span class="material-symbols-outlined"> close </span>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+          </div>
+          <!-- Modal body -->
+          <div class="p-2 space-y-4 h-[85%] flex flex-row">
+            <div
+              class="w-[30%] border-r flex flex-col space-y-3 overflow-y-auto no-scrollbar px-2"
+            >
+              <!-- message item card -->
+              <div
+                data-tab="read-message-tab"
+                class="tab-message-button h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+              >
+                <div class="w-[20%]">
+                  <div
+                    class="w-14 h-14 bg-primary rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      src="./../assets/images/avatar/2.png"
+                      class="w-full h-full object-cover"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="w-[60%] flex flex-col space-y-1 items-start">
+                  <p class="font-semibold">Khalid</p>
+                  <p class="line-clamp-1">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Rem suscipit ipsam, optio dolores dolor aperiam hic
+                    deserunt, ipsa quo, nesciunt aut non possimus nulla ipsum.
+                    Molestiae, nihil. Aperiam, explicabo qui.
+                  </p>
+                </div>
+                <div class="w-[20%] flex flex-col space-y-2 items-end">
+                  <span>12:10pm</span>
+                  <span
+                    class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                  >
+                    <p class="text-white text-xs">5</p>
+                  </span>
+                </div>
+              </div>
+              <!-- end message item card -->
+
+              <!-- message item card -->
+              <div
+                class="h-20 w-full border rounded-lg flex flex-row p-2 items-center hover:bg-primary/10"
+              >
+                <div class="w-[20%]">
+                  <div
+                    class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center"
+                  >
+                    <p class="text-primary">H</p>
+                  </div>
+                </div>
+                <div class="w-[60%] flex flex-col space-y-1 items-start">
+                  <p class="font-semibold">Helen T.</p>
+                  <p class="line-clamp-1">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Rem suscipit ipsam, optio dolores dolor aperiam hic
+                    deserunt, ipsa quo, nesciunt aut non possimus nulla ipsum.
+                    Molestiae, nihil. Aperiam, explicabo qui.
+                  </p>
+                </div>
+                <div class="w-[20%] flex flex-col space-y-2 items-end">
+                  <span>12:10pm</span>
+                  <span
+                    class="w-5 h-5 flex items-center justify-center rounded-full bg-red-600"
+                  >
+                    <p class="text-white text-xs">5</p>
+                  </span>
+                </div>
+              </div>
+              <!-- end message item card -->
+            </div>
+            <div class="w-[70%] flex flex-col">
+              <!-- start chatting card, close when messages is displayed -->
+              <div
+                id="start-chatting-tab"
+                class="tab-message-content active w-full h-full flex items-center justify-center"
+              >
+                <p class="text-lg">Start chatting!</p>
+              </div>
+              <!-- end start chatting card -->
+
+              <!-- chats tab -->
+              <div
+                id="read-message-tab"
+                class="tab-message-content hidden flex-col h-full"
+              >
+                <!-- Modal body -->
+                <div
+                  class="p-2 flex flex-col space-y-4 h-[90%] overflow-y-auto no-scrollbar"
+                >
+                  <div class="w-full flex flex-col space-y-2">
+                    <div class="w-full flex justify-center">
+                      <p class="font-bold">01/10/23</p>
+                    </div>
+
+                    <div class="w-full flex justify-start">
+                      <div class="w-[80%] flex flex-row items-end space-x-1">
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/2.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Lorem ipsum dolor sit</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-full flex justify-end items-end">
+                      <div
+                        class="w-[80%] flex flex-row items-end justify-end space-x-1"
+                      >
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hi</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hello</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/pharmacy.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="w-full flex flex-col space-y-2">
+                    <div class="w-full flex justify-center">
+                      <p class="font-bold">02/10/23</p>
+                    </div>
+
+                    <div class="w-full flex justify-start">
+                      <div class="w-[80%] flex flex-row items-end space-x-1">
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/2.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>I want to inquire about an OTC</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>
+                              What other brand of paracetamol do you have apart
+                              from Emzor?
+                            </p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="w-full flex justify-end items-end">
+                      <div
+                        class="w-[100%] flex flex-row items-end justify-end space-x-1"
+                      >
+                        <div class="flex flex-col space-y-2">
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hi</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                          <div
+                            class="border rounded-md p-2 px-4 flex flex-col space-y-2"
+                          >
+                            <p>Hello</p>
+                            <div class="w-full flex justify-end">
+                              <span class="text-xs text-gray-500"
+                                >08:01 pm</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="min-w-[5%]">
+                          <div
+                            class="w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                          >
+                            <img
+                              src="./../assets/images/avatar/pharmacy.png"
+                              class="w-full h-full object-cover"
+                              alt=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- footer -->
+                <div
+                  class="h-[10%] w-full flex flex-row items-center p-2 space-x-1"
+                >
+                  <div class="w-[5%]">
+                    <button
+                      class="w-fit h-fit flex items-center justify-center p-2 border rounded-full"
+                    >
+                      <span class="material-symbols-outlined"> add </span>
+                    </button>
+                  </div>
+                  <div class="w-[90%] px-1">
+                    <div
+                      class="w-full h-12 border rounded-md flex flex-row items-center"
+                    >
+                      <input
+                        type="text"
+                        class="w-[90%] h-full border-0 outline-none ring-0 rounded-md"
+                      />
+                      <div class="w-[10%]">
+                        <span class="material-symbols-outlined"> mood </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-[5%]">
+                    <button class="">
+                      <span class="material-symbols-outlined"> send </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- end chats tab -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end main message modal -->
+    <!-- end message modals -->
+
+    <script src="./../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="./../assets/js/main.js"></script>
+    <script src="./../assets/js/pharmacy.js"></script>
+    <script src="./../assets/js/pharmacy/message.js"></script>
+    <script>
+      const ctx = document.getElementById("myChart");
+      const data = [
+        {
+          id: 1,
+          month: "January",
+          sales: 10,
+          purchase: 50,
+          income: 80,
+          expense: 40,
+        },
+        {
+          id: 2,
+          month: "February",
+          sales: 20,
+          purchase: 50,
+          income: 80,
+          expense: 40,
+        },
+        {
+          id: 3,
+          month: "March",
+          sales: 30,
+          purchase: 50,
+          income: 80,
+          expense: 40,
+        },
+        {
+          id: 4,
+          month: "April",
+          sales: 40,
+          purchase: 50,
+          income: 80,
+          expense: 40,
+        },
+      ];
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: data.map((data) => data.month),
+          datasets: [
+            {
+              label: "Sales",
+              data: data.map((data) => data.sales),
+              backgroundColor: "#1e293b",
+            },
+            {
+              label: "Purchase",
+              data: data.map((data) => data.purchase),
+              backgroundColor: "#2A8420",
+            },
+            {
+              label: "Income",
+              data: data.map((data) => data.income),
+              backgroundColor: "#F9DEDC",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          maintainAspectRatio: false,
+          responsive: true,
+        },
+      });
+    </script>
+  </body>
+</html>

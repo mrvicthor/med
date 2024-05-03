@@ -1,0 +1,5 @@
+node_modules/*
+test/*
+# components/*
+/assets/css/main.css
+/account/message.html

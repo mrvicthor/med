@@ -1,7 +1,6 @@
-
-  {
+{
     "rewrites": [
-      { "source": "/pharmacy/(.*)", "destination": "/$1" }
+      { "source": "/(.*)", "destination": "/pharmacy/$1" }
     ]
   }
   

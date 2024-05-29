@@ -387,8 +387,382 @@
     <!-- end top bar -->
     <!-- main section -->
     <main
-      class="w-full h-fit min-h-[100vh] max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10 py-4"
-    ></main>
+      class="w-full h-fit min-h-[100vh] flex flex-col overflow-y-auto no-scrollbar gap-10 py-4"
+    >
+      <div class="px-2 lg:px-10 my-2 flex flex-col lg:flex-row lg:space-x-10">
+        <div class="card rounded-md">
+          <div class="flex flex-col space-y-7 p-4">
+            <p class="text-xl font-semibold">Cart (3)</p>
+          </div>
+
+          <div class="card-content flex flex-col space-y-4 px-4">
+            <!-- cart item -->
+            <div
+              class="h-fit w-full border-b border-t flex flex-row py-2 space-x-2"
+            >
+              <div class="w-[25%] lg:w-[10%]">
+                <div class="w-24 h-24 border rounded-md relative bg-primary/10">
+                  <img
+                    src="./assets/images/drug/1.png"
+                    alt="Pfizer Paracetamol 500mg"
+                    class="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              </div>
+              <div
+                class="w-[75%] lg:w-[90%] h-full flex flex-col space-y-3 px-3"
+              >
+                <div class="w-full flex flex-col space-y-1">
+                  <div class="w-full flex flex-row justify-between">
+                    <p>Pfizer Paracetamol 500mg</p>
+                    <button
+                      class="h-8 w-8 border rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined"> close </span>
+                    </button>
+                  </div>
+                  <div class="px-4 py-1 bg-primary/20 w-fit h-fit rounded-md">
+                    <p class="text-xs font-semibold">24 Tablets</p>
+                  </div>
+                  <div>
+                    <p class="text-lg font-semibold">$20.90</p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row items-center justify-between"
+                >
+                  <div class="flex flex-row items-center space-x-2 text-sm">
+                    <p>Pharmacy:</p>
+                    <p class="text-gray-400">Southwood Pharmacy</p>
+                  </div>
+                  <div class="flex flex-row items-center space-x-3">
+                    <button
+                      class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined text-white">
+                        remove
+                      </span>
+                    </button>
+                    <div
+                      class="h-8 w-8 border rounded-lg flex items-center justify-center"
+                    >
+                      <p>2</p>
+                    </div>
+                    <button
+                      class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined text-white">
+                        add
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end cart item -->
+            <!-- cart item -->
+            <div class="h-fit w-full flex flex-row py-2 space-x-2">
+              <div class="w-[25%] lg:w-[10%]">
+                <div class="w-24 h-24 border rounded-md relative bg-primary/10">
+                  <img
+                    src="./assets/images/drug/2.png"
+                    alt="Pfizer Paracetamol 500mg"
+                    class="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              </div>
+              <div
+                class="w-[75%] lg:w-[90%] h-full flex flex-col space-y-3 px-3"
+              >
+                <div class="w-full flex flex-col space-y-1">
+                  <div class="w-full flex flex-row justify-between">
+                    <p>Pfizer Paracetamol 500mg</p>
+                    <button
+                      class="h-8 w-8 border rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined"> close </span>
+                    </button>
+                  </div>
+                  <div class="px-4 py-1 bg-primary/20 w-fit h-fit rounded-md">
+                    <p class="text-xs font-semibold">24 Tablets</p>
+                  </div>
+                  <div>
+                    <p class="text-lg font-semibold">$20.90</p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row items-center justify-between"
+                >
+                  <div class="flex flex-row items-center space-x-2 text-sm">
+                    <p>Pharmacy:</p>
+                    <p class="text-gray-400">Southwood Pharmacy</p>
+                  </div>
+                  <div class="flex flex-row items-center space-x-3">
+                    <button
+                      class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined text-white">
+                        remove
+                      </span>
+                    </button>
+                    <div
+                      class="h-8 w-8 border rounded-lg flex items-center justify-center"
+                    >
+                      <p>2</p>
+                    </div>
+                    <button
+                      class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined text-white">
+                        add
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end cart item -->
+            <!-- cart item -->
+            <div
+              class="h-fit w-full border-b border-t flex flex-row py-2 space-x-2"
+            >
+              <div class="w-[25%] lg:w-[10%]">
+                <div class="w-24 h-24 border rounded-md relative bg-primary/10">
+                  <img
+                    src="./assets/images/drug/1.png"
+                    alt="Pfizer Paracetamol 500mg"
+                    class="w-full h-full object-cover rounded-md"
+                  />
+                </div>
+              </div>
+              <div
+                class="w-[75%] lg:w-[90%] h-full flex flex-col space-y-3 px-3"
+              >
+                <div class="w-full flex flex-col space-y-1">
+                  <div class="w-full flex flex-row justify-between">
+                    <p>Pfizer Paracetamol 500mg</p>
+                    <button
+                      class="h-8 w-8 border rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined"> close </span>
+                    </button>
+                  </div>
+                  <div class="px-4 py-1 bg-primary/20 w-fit h-fit rounded-md">
+                    <p class="text-xs font-semibold">24 Tablets</p>
+                  </div>
+                  <div>
+                    <p class="text-lg font-semibold">$20.90</p>
+                  </div>
+                </div>
+                <div
+                  class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row items-center justify-between"
+                >
+                  <div class="flex flex-row items-center space-x-2 text-sm">
+                    <p>Pharmacy:</p>
+                    <p class="text-gray-400">Southwood Pharmacy</p>
+                  </div>
+                  <div class="flex flex-row items-center space-x-3">
+                    <button
+                      class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined text-white">
+                        remove
+                      </span>
+                    </button>
+                    <div
+                      class="h-8 w-8 border rounded-lg flex items-center justify-center"
+                    >
+                      <p>2</p>
+                    </div>
+                    <button
+                      class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <span class="material-symbols-outlined text-white">
+                        add
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end cart item -->
+          </div>
+        </div>
+
+        <div class="w-full lg:w-[40%] flex flex-col space-y-3">
+          <div class="card h-fit rounded-md">
+            <div class="flex flex-col space-y-7 p-4">
+              <p class="text-lg font-semibold">Summary</p>
+
+              <div class="flex flex-col space-y-3">
+                <div class="w-full flex justify-between">
+                  <p>Subtotal</p>
+                  <span class="font-semibold">$116.59</span>
+                </div>
+                <div class="w-full flex justify-between">
+                  <p>Delivery</p>
+                  <span class="font-semibold">$116.59</span>
+                </div>
+              </div>
+              <div class="w-full flex justify-between">
+                <p>Total</p>
+                <span class="text-lg font-semibold"> $126.59 </span>
+              </div>
+
+              <a
+                href="./checkout.html"
+                aria-label="Checkout button"
+                class="btn-primary rounded-full py-4 px-4"
+              >
+                <p>Checkout</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="card h-fit rounded-md">
+            <div class="flex flex-col space-y-7 p-4">
+              <p class="text-lg font-semibold">Disclaimer</p>
+              <p>
+                For drugs with a price range, go to or inquire from pharmacy,
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row justify-between items-center">
+        <div class="w-[10%] hidden lg:flex items-center justify-center">
+          <button
+            class="w-10 h-10 rounded-full border flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined"> arrow_back </span>
+          </button>
+        </div>
+        <div
+          class="w-full lg:w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 py-10 gap-6 px-2"
+        >
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/1.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/2.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/3.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/1.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="w-[10%] hidden lg:flex items-center justify-center">
+          <button
+            class="w-10 h-10 rounded-full border flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined"> arrow_forward </span>
+          </button>
+        </div>
+      </div>
+    </main>
 
     <!-- footer -->
     <footer
@@ -413,7 +787,7 @@
             />
 
             <button
-              ariaLabel="Subscribe button"
+              aria-label="Subscribe button"
               class="btn-primary h-fit w-fit px-6 py-3 rounded-full"
             >
               <p>Subscribe</p>
@@ -824,7 +1198,7 @@
                 </div>
                 <div>
                   <button
-                    ariaLabel="Edit information button"
+                    aria-label="Edit information button"
                     class="text-primary"
                     type="button"
                     data-modal-hide="profile-info-modal"

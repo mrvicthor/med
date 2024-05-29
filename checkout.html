@@ -387,8 +387,443 @@
     <!-- end top bar -->
     <!-- main section -->
     <main
-      class="w-full h-fit min-h-[100vh] max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10 py-4"
-    ></main>
+      class="w-full h-fit min-h-[100vh] flex flex-col overflow-y-auto no-scrollbar gap-10 py-4"
+    >
+      <div class="px-2 lg:px-10 my-2 flex flex-col lg:flex-row lg:space-x-10">
+        <div class="w-full flex flex-col space-y-4">
+          <div class="card rounded-md">
+            <div class="flex flex-col space-y-2 py-2">
+              <div class="flex flex-row justify-between p-4 border-b">
+                <p class="text-xl font-semibold">Delivery Address</p>
+                <button
+                  aria-label="Manage address button"
+                  data-modal-id="delivery-address-modal"
+                  class="text-primary font-semibold"
+                >
+                  Manage
+                </button>
+              </div>
+              <div class="flex flex-col px-5 space-y-2">
+                <p class="font-semibold">Raymond Brown</p>
+                <p class="text-light text-sm text-gray-400">
+                  17 Silverstone Avenue, Los Angelos, CA. 90001.
+                </p>
+                <p class="text-light text-sm text-gray-400">+1 637 5363 635</p>
+              </div>
+            </div>
+          </div>
+          <div class="card rounded-md">
+            <div class="flex flex-col space-y-2 py-2">
+              <div class="flex flex-row justify-between p-4 border-b">
+                <p class="text-xl font-semibold">Payment Method</p>
+                <button
+                  aria-label="Manage payment methods"
+                  data-modal-id="payment-method-modal"
+                  class="text-primary font-semibold"
+                >
+                  Edit
+                </button>
+              </div>
+              <div class="flex flex-col space-y-2 px-4">
+                <p class="font-semibold">Pay with card</p>
+                <div class="flex flex-row space-x-2">
+                  <div class="w-16 h-8 rounded-md">
+                    <img
+                      alt="Mastercard"
+                      src="./assets/images/cards/mastercard.png"
+                      class="w-full h-full object-contain rounded-md"
+                    />
+                  </div>
+                  <div class="w-16 h-8 rounded-md">
+                    <img
+                      alt="Mastercard"
+                      src="./assets/images/cards/visa.png"
+                      class="w-full h-full object-contain rounded-md"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card rounded-md">
+            <div class="flex flex-col space-y-7 p-4">
+              <p class="text-xl font-semibold">Cart (3)</p>
+            </div>
+
+            <div class="card-content flex flex-col space-y-4 px-4">
+              <!-- cart item -->
+              <div
+                class="h-fit w-full border-b border-t flex flex-row py-2 space-x-2"
+              >
+                <div class="w-[25%] lg:w-[10%]">
+                  <div
+                    class="w-24 h-24 border rounded-md relative bg-primary/10"
+                  >
+                    <img
+                      src="./assets/images/drug/1.png"
+                      alt="Pfizer Paracetamol 500mg"
+                      class="w-full h-full object-cover rounded-md"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="w-[75%] lg:w-[90%] h-full flex flex-col space-y-3 px-3"
+                >
+                  <div class="w-full flex flex-col space-y-1">
+                    <div class="w-full flex flex-row justify-between">
+                      <p>Pfizer Paracetamol 500mg</p>
+                      <button
+                        class="h-8 w-8 border rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined"> close </span>
+                      </button>
+                    </div>
+                    <div class="px-4 py-1 bg-primary/20 w-fit h-fit rounded-md">
+                      <p class="text-xs font-semibold">24 Tablets</p>
+                    </div>
+                    <div>
+                      <p class="text-lg font-semibold">$20.90</p>
+                    </div>
+                  </div>
+                  <div
+                    class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row items-center justify-between"
+                  >
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p>Pharmacy:</p>
+                      <p class="text-gray-400">Southwood Pharmacy</p>
+                    </div>
+                    <div class="flex flex-row items-center space-x-3">
+                      <button
+                        class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-white">
+                          remove
+                        </span>
+                      </button>
+                      <div
+                        class="h-8 w-8 border rounded-lg flex items-center justify-center"
+                      >
+                        <p>2</p>
+                      </div>
+                      <button
+                        class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-white">
+                          add
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end cart item -->
+              <!-- cart item -->
+              <div class="h-fit w-full flex flex-row py-2 space-x-2">
+                <div class="w-[25%] lg:w-[10%]">
+                  <div
+                    class="w-24 h-24 border rounded-md relative bg-primary/10"
+                  >
+                    <img
+                      src="./assets/images/drug/2.png"
+                      alt="Pfizer Paracetamol 500mg"
+                      class="w-full h-full object-cover rounded-md"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="w-[75%] lg:w-[90%] h-full flex flex-col space-y-3 px-3"
+                >
+                  <div class="w-full flex flex-col space-y-1">
+                    <div class="w-full flex flex-row justify-between">
+                      <p>Pfizer Paracetamol 500mg</p>
+                      <button
+                        class="h-8 w-8 border rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined"> close </span>
+                      </button>
+                    </div>
+                    <div class="px-4 py-1 bg-primary/20 w-fit h-fit rounded-md">
+                      <p class="text-xs font-semibold">24 Tablets</p>
+                    </div>
+                    <div>
+                      <p class="text-lg font-semibold">$20.90</p>
+                    </div>
+                  </div>
+                  <div
+                    class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row items-center justify-between"
+                  >
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p>Pharmacy:</p>
+                      <p class="text-gray-400">Southwood Pharmacy</p>
+                    </div>
+                    <div class="flex flex-row items-center space-x-3">
+                      <button
+                        class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-white">
+                          remove
+                        </span>
+                      </button>
+                      <div
+                        class="h-8 w-8 border rounded-lg flex items-center justify-center"
+                      >
+                        <p>2</p>
+                      </div>
+                      <button
+                        class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-white">
+                          add
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end cart item -->
+              <!-- cart item -->
+              <div
+                class="h-fit w-full border-b border-t flex flex-row py-2 space-x-2"
+              >
+                <div class="w-[25%] lg:w-[10%]">
+                  <div
+                    class="w-24 h-24 border rounded-md relative bg-primary/10"
+                  >
+                    <img
+                      src="./assets/images/drug/1.png"
+                      alt="Pfizer Paracetamol 500mg"
+                      class="w-full h-full object-cover rounded-md"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="w-[75%] lg:w-[90%] h-full flex flex-col space-y-3 px-3"
+                >
+                  <div class="w-full flex flex-col space-y-1">
+                    <div class="w-full flex flex-row justify-between">
+                      <p>Pfizer Paracetamol 500mg</p>
+                      <button
+                        class="h-8 w-8 border rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined"> close </span>
+                      </button>
+                    </div>
+                    <div class="px-4 py-1 bg-primary/20 w-fit h-fit rounded-md">
+                      <p class="text-xs font-semibold">24 Tablets</p>
+                    </div>
+                    <div>
+                      <p class="text-lg font-semibold">$20.90</p>
+                    </div>
+                  </div>
+                  <div
+                    class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row items-center justify-between"
+                  >
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p>Pharmacy:</p>
+                      <p class="text-gray-400">Southwood Pharmacy</p>
+                    </div>
+                    <div class="flex flex-row items-center space-x-3">
+                      <button
+                        class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-white">
+                          remove
+                        </span>
+                      </button>
+                      <div
+                        class="h-8 w-8 border rounded-lg flex items-center justify-center"
+                      >
+                        <p>2</p>
+                      </div>
+                      <button
+                        class="h-8 w-8 border bg-primary rounded-full flex items-center justify-center"
+                      >
+                        <span class="material-symbols-outlined text-white">
+                          add
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end cart item -->
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-[40%] flex flex-col space-y-3">
+          <div class="card h-fit rounded-md">
+            <div class="flex flex-col space-y-7 p-4">
+              <p class="text-lg font-semibold">Summary</p>
+
+              <div class="flex flex-col space-y-3">
+                <div class="w-full flex justify-between">
+                  <p>Subtotal</p>
+                  <span class="font-semibold">$116.59</span>
+                </div>
+                <div class="w-full flex justify-between">
+                  <p>Delivery</p>
+                  <span class="font-semibold">$116.59</span>
+                </div>
+              </div>
+              <div class="w-full flex justify-between">
+                <p>Total</p>
+                <span class="text-lg font-semibold"> $126.59 </span>
+              </div>
+
+              <button
+                aria-label="Pay button"
+                class="btn-primary rounded-full py-4 px-4"
+              >
+                <p>Pay Now</p>
+              </button>
+            </div>
+          </div>
+
+          <div class="card h-fit rounded-md">
+            <div class="flex flex-col space-y-7 p-4">
+              <p class="text-lg font-semibold">Disclaimer</p>
+              <p>
+                For drugs with a price range, go to or inquire from pharmacy,
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-row justify-between items-center">
+        <div class="w-[10%] hidden lg:flex items-center justify-center">
+          <button
+            class="w-10 h-10 rounded-full border flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined"> arrow_back </span>
+          </button>
+        </div>
+        <div
+          class="w-full lg:w-[80%] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 py-10 gap-6 px-2"
+        >
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/1.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/2.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/3.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+          <a
+            class="w-full h-fit border flex flex-col items-start rounded-md hover:opacity-70"
+          >
+            <div class="w-full h-64 bg-white dark:bg-slate-700 rounded-t-md">
+              <img
+                alt="Emzor Paracetamol 500mg"
+                src="./assets/images/drug/1.png"
+                class="w-full h-full rounded-t-md object-cover"
+              />
+            </div>
+            <div
+              class="w-full flex flex-col items-start p-2 py-3 bg-secondary/40"
+            >
+              <div class="w-full flex flex-row space-x-2 items-end">
+                <p>$22.50</p>
+
+                <span class="flex items-end space-x-2">
+                  <p>-</p>
+                  <p>$52.00</p>
+                </span>
+
+                <span class="text-xs text-gray-400"> 1 / Tablets </span>
+              </div>
+              <p class="font-semibold truncate line-clamp-1">
+                Emzor Paracetamol 500mg
+              </p>
+            </div>
+          </a>
+        </div>
+        <div class="w-[10%] hidden lg:flex items-center justify-center">
+          <button
+            class="w-10 h-10 rounded-full border flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined"> arrow_forward </span>
+          </button>
+        </div>
+      </div>
+    </main>
 
     <!-- footer -->
     <footer
@@ -413,7 +848,7 @@
             />
 
             <button
-              ariaLabel="Subscribe button"
+              aria-label="Subscribe button"
               class="btn-primary h-fit w-fit px-6 py-3 rounded-full"
             >
               <p>Subscribe</p>
@@ -824,7 +1259,7 @@
                 </div>
                 <div>
                   <button
-                    ariaLabel="Edit information button"
+                    aria-label="Edit information button"
                     class="text-primary"
                     type="button"
                     data-modal-hide="profile-info-modal"
@@ -1083,7 +1518,374 @@
     </div>
     <!-- end change photo modal -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <!-- delivery address modal -->
+    <div
+      data-modal-id="delivery-address-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[90%] mx-auto rounded-lg flex flex-col p-2 lg:p-10 overflow-x-auto no-scrollbar"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div
+            class="modal-header border-b flex justify-between items-center pb-3"
+          >
+            <p class="text-2xl font-bold modal-title">Delivery Address</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-5">
+                <div
+                  class="w-full flex flex-col items-end space-y-1 border-b py-2"
+                >
+                  <div
+                    class="w-full flex flex-row items-start justify-between px-2"
+                  >
+                    <div
+                      class="w-[5%] h-full flex flex-col items-center justify-start translate-y-2"
+                    >
+                      <input type="radio" class="w-4 h-4 accent-primary" />
+                    </div>
+                    <div
+                      class="flex-1 w-[88%] h-full flex flex-col items-start justify-start"
+                    >
+                      <p>Raymond Brown, +1 637 5363 635</p>
+                    </div>
+                    <div
+                      class="w-[5%] h-full flex flex-col items-start justify-start"
+                    >
+                      <button
+                        aria-label="update address"
+                        class="text-primary font-semibold"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                  <div class="w-[95%] px-2">
+                    <p class="font-semibold">
+                      17 Silverstone Avenue, Los Angeles, CA. 90001.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="w-full flex flex-col items-end space-y-1 border-b py-2"
+                >
+                  <div
+                    class="w-full flex flex-row items-start justify-between px-2"
+                  >
+                    <div
+                      class="w-[5%] h-full flex flex-col items-center justify-start translate-y-2"
+                    >
+                      <input type="radio" class="w-4 h-4 accent-primary" />
+                    </div>
+                    <div
+                      class="flex-1 w-[88%] h-full flex flex-col items-start justify-start"
+                    >
+                      <p>Raymond Brown, +1 637 5363 635</p>
+                    </div>
+                    <div
+                      class="w-[5%] h-full flex flex-col items-start justify-start"
+                    >
+                      <button
+                        aria-label="update address"
+                        class="text-primary font-semibold"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                  <div class="w-[95%] px-2">
+                    <p class="font-semibold">
+                      17 Silverstone Avenue, Los Angeles, CA. 90001.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="w-full flex flex-col items-end space-y-1 border-b py-2"
+                >
+                  <div
+                    class="w-full flex flex-row items-start justify-between px-2"
+                  >
+                    <div
+                      class="w-[5%] h-full flex flex-col items-center justify-start translate-y-2"
+                    >
+                      <input type="radio" class="w-4 h-4 accent-primary" />
+                    </div>
+                    <div
+                      class="flex-1 w-[88%] h-full flex flex-col items-start justify-start"
+                    >
+                      <p>Raymond Brown, +1 637 5363 635</p>
+                    </div>
+                    <div
+                      class="w-[5%] h-full flex flex-col items-start justify-start"
+                    >
+                      <button
+                        aria-label="update address"
+                        class="text-primary font-semibold"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                  <div class="w-[95%] px-2">
+                    <p class="font-semibold">
+                      17 Silverstone Avenue, Los Angeles, CA. 90001.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="modal-footer flex justify-end pt-2">
+            <div class="flex flex-row items-center justify-end">
+              <div class="flex flex-row items-center space-x-2">
+                <button
+                  aria-label="Add New Product button"
+                  type="button"
+                  style="background-color: #2a8420"
+                  class="modal-close btn-primary decoration-black rounded-full py-3 px-4"
+                  data-modal-id="add-delivery-address-modal"
+                >
+                  <span class="material-symbols-outlined text-sm">add</span>
+                  <p class="text-white">Add New Address</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end delivery address modal -->
+
+    <!-- add delivery address modal -->
+    <div
+      data-modal-id="add-delivery-address-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[90%] mx-auto rounded-lg flex flex-col p-2 lg:p-10 overflow-x-auto no-scrollbar"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">Add New Address</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-5">
+                <div class="input-group rounded-lg">
+                  <label class="input-label">Contact Name </label>
+                  <input type="text" class="text-input rounded-md" />
+                </div>
+                <div class="input-group rounded-lg">
+                  <label class="input-label">Phone Number </label>
+                  <input type="text" class="text-input rounded-md" />
+                </div>
+                <div class="input-group rounded-lg">
+                  <label class="input-label">Street Address </label>
+                  <input type="text" class="text-input rounded-md" />
+                </div>
+                <div class="input-group rounded-lg">
+                  <label class="input-label">City / Town </label>
+                  <input type="text" class="text-input rounded-md" />
+                </div>
+                <div class="input-group rounded-lg">
+                  <label class="input-label">State </label>
+                  <input type="text" class="text-input rounded-md" />
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                  <div class="input-group rounded-lg">
+                    <label class="input-label">Country </label>
+                    <select type="text" class="text-input rounded-md"></select>
+                  </div>
+                  <div class="input-group rounded-lg">
+                    <label class="input-label">Zip / Postal Code </label>
+                    <input type="text" class="text-input rounded-md" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="modal-footer flex justify-end pt-2">
+            <div class="flex flex-row items-center justify-end">
+              <div class="flex flex-row items-center space-x-2">
+                <button
+                  type="reset"
+                  class="modal-close btn-primary-outline h-10 px-6 rounded-full"
+                >
+                  <p class="text-green-500">Cancel</p>
+                </button>
+
+                <button
+                  aria-label="Add New Product button"
+                  type="button"
+                  style="background-color: #2a8420"
+                  class="btn-primary decoration-black rounded-full py-3 px-4"
+                  data-modal-id="add-delivery-address-modal"
+                >
+                  <p class="text-white">Save</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end add delivery address modal -->
+
+    <!-- payment method modal -->
+    <div
+      data-modal-id="payment-method-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[90%] mx-auto rounded-lg flex flex-col p-2 lg:p-10 overflow-x-auto no-scrollbar"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div
+            class="modal-header border-b flex justify-between items-center pb-3"
+          >
+            <p class="text-2xl font-bold modal-title">Payment Method</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-5">
+                <div
+                  class="w-full flex flex-col items-end space-y-1 border-b py-2"
+                >
+                  <div
+                    class="w-full flex flex-row items-start justify-between px-2"
+                  >
+                    <div
+                      class="w-[5%] h-full flex flex-col items-start justify-start translate-y-2"
+                    >
+                      <input
+                        type="radio"
+                        name="payment_method"
+                        class="w-4 h-4 accent-primary"
+                      />
+                    </div>
+                    <div
+                      class="w-[94%] h-full flex flex-col items-start justify-start"
+                    >
+                      <p>Pay with card</p>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[97%] px-2 flex flex-row items-center space-x-2"
+                  >
+                    <div class="w-14 h-6 relative rounded-md">
+                      <img
+                        alt="label"
+                        src="./assets/images/cards/mastercard.png"
+                        layout="fill"
+                        objectFit="contain"
+                        class="w-full h-full object-contain rounded-md"
+                      />
+                    </div>
+                    <div class="w-14 h-6 relative rounded-md">
+                      <img
+                        alt="label"
+                        src="./assets/images/cards/visa.png"
+                        layout="fill"
+                        objectFit="contain"
+                        class="w-full h-full object-contain rounded-md"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full flex flex-col items-end space-y-1 border-b py-2"
+                >
+                  <div
+                    class="w-full flex flex-row items-start justify-between px-2"
+                  >
+                    <div
+                      class="w-[5%] h-full flex flex-col items-start justify-start translate-y-2"
+                    >
+                      <input
+                        type="radio"
+                        name="payment_method"
+                        class="w-4 h-4 accent-primary"
+                      />
+                    </div>
+                    <div
+                      class="w-[94%] h-full flex flex-col items-start justify-start"
+                    >
+                      <p>Pay with Paypal</p>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[97%] px-2 flex flex-row items-center space-x-2"
+                  >
+                    <div class="w-14 h-6 relative rounded-md">
+                      <img
+                        alt="label"
+                        src="./assets/images/cards/paypal.png"
+                        layout="fill"
+                        objectFit="contain"
+                        class="w-full h-full object-contain rounded-md"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full flex flex-col items-end space-y-1 border-b py-2"
+                >
+                  <div
+                    class="w-full flex flex-row items-start justify-between px-2"
+                  >
+                    <div
+                      class="w-[5%] h-full flex flex-col items-start justify-start translate-y-2"
+                    >
+                      <input
+                        type="radio"
+                        name="payment_method"
+                        class="w-4 h-4 accent-primary"
+                      />
+                    </div>
+                    <div
+                      class="w-[94%] h-full flex flex-col items-start justify-start"
+                    >
+                      <p>Wire transfer</p>
+                    </div>
+                  </div>
+                  <div
+                    class="w-[97%] px-2 flex flex-row items-center space-x-2"
+                  >
+                    <p class="font-extralight text-sm">
+                      You’ll be redirected to a secure page for the account
+                      details,
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end payment method modal -->
+
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/modal.js"></script>
   </body>
 </html>

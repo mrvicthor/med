@@ -388,7 +388,456 @@
     <!-- main section -->
     <main
       class="w-full h-fit min-h-[100vh] max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10 py-4"
-    ></main>
+    >
+      <!-- navigation menu -->
+      <nav
+        class="lg:w-[25%] xl:w-[20%] max-h-[90vh] h-fit hidden lg:flex flex-col space-y-8 bg-white overflow-y-auto pt-10"
+      >
+        <div class="px-2 xl:px-4 2xl:px-10">
+          <p class="font-semibold text-capitalize text-2xl">Account</p>
+        </div>
+        <div class="flex flex-col space-y-2 px-2 xl:px-4 2xl:px-8">
+          <a href="./index.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">My orders</p>
+          </a>
+          <a href="./messages.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">chat</span>
+            <p class="">Messages</p>
+          </a>
+          <a href="./feedbacks.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">chat_info</span>
+            <p class="">Feedbacks</p>
+          </a>
+          <a href="./pharmacy.html" class="active-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >local_pharmacy</span
+            >
+            <p class="">Followed Pharmacies</p>
+          </a>
+          <a href="./reminder.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >notifications_active</span
+            >
+            <p class="">Medication Reminder</p>
+          </a>
+          <a href="./settings.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+
+        <div class="flex flex-col space-y-2 px-8 border-t py-2">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </nav>
+      <section
+        class="w-full lg:w-[75%] h-full rounded-md flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+      >
+        <div
+          class="w-full bg-white rounded-md p-4 flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-row items-center justify-between">
+            <p class="text-xl font-semibold">Followed Pharmacies (32)</p>
+          </div>
+          <div
+            class="w-full flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:justify-between"
+          >
+            <div></div>
+            <div
+              class="w-[100%] lg:w-[20vw] flex flex-row items-center space-x-3"
+            >
+              <div
+                class="flex h-12 w-full bg-inherit border border-gray-400 rounded-full p-2 items-center"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Pharmacy name"
+                  class="pt-2 text-sm w-[90%] text-gray-900 border-0 rounded-lg text-start outline-none ring-0"
+                  placeholder="Search sales month"
+                />
+                <div class="w-[10%] h-full flex items-center justify-center">
+                  <span class="material-symbols-outlined">search</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full min-h-20 border border-gray-400 rounded-lg p-2 flex flex-row space-x-"
+            >
+              <div class="h-full w-[10%]">
+                <div class="w-10 h-10 rounded-full bg-primary relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="Andre Pharmacy"
+                    class="rounded-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="h-full w-[90%] flex flex-col justify-between">
+                <div class="flex flex-col space-y-1">
+                  <p class="font-bold">Andre Pharmacy</p>
+                  <div class="flex flex-row items-center space-x-2">
+                    <p class="text-sm text-gray-400">234 followers</p>
+                    <span class="w-1 h-1 bg-gray-400"></span>
+                    <button aria-label="Un follow button" class="text-primary">
+                      Unfollow
+                    </button>
+                  </div>
+                </div>
+                <div class="w-full flex flex-row justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-400">
+                      42 Kings St, Kaystone, CA.
+                    </p>
+                  </div>
+                  <button
+                    aria-label="Get direction button"
+                    class="btn-primary-outline py-3 rounded-full px-4 border border-primary"
+                  >
+                    <p class="text-primary">Get Direction</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- pagination -->
+          <div class="flex flex-row items-center justify-between">
+            <div class="flex flex-row space-x-2">
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined">skip_previous</span>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined"> arrow_left </span>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center border-primary/10 bg-primary/10 text-primary"
+              >
+                <p>1</p>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <p>2</p>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <p>3</p>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined"> arrow_right </span>
+              </button>
+              <button
+                class="h-10 w-10 border rounded-md flex items-center justify-center hover:border-primary/10 hover:bg-primary/10 hover:text-primary"
+              >
+                <span class="material-symbols-outlined">skip_next</span>
+              </button>
+            </div>
+            <div class="hidden lg:flex flex-row items-center space-x-2">
+              <p class="font-semibold text-sm">Items per page:</p>
+              <select class="border rounded-md p-2 bg-inherit">
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+              </select>
+            </div>
+          </div>
+          <!-- pagination end -->
+        </div>
+      </section>
+    </main>
 
     <!-- footer -->
     <footer
@@ -413,7 +862,7 @@
             />
 
             <button
-              ariaLabel="Subscribe button"
+              aria-label="Subscribe button"
               class="btn-primary h-fit w-fit px-6 py-3 rounded-full"
             >
               <p>Subscribe</p>
@@ -732,7 +1181,7 @@
       <div
         class="flex flex-col overflow-y-auto no-scrollbar space-y-2 py-4 px-2"
       >
-        <a href="./index.html" class="active-menu">
+        <a href="./index.html" class="inactive-menu">
           <span class="material-symbols-outlined text-2xl"
             >shopping_cart_checkout</span
           >
@@ -746,7 +1195,7 @@
           <span class="material-symbols-outlined text-2xl">chat_info</span>
           <p class="">Feedbacks</p>
         </a>
-        <a href="./pharmacy.html" class="inactive-menu">
+        <a href="./pharmacy.html" class="active-menu">
           <span class="material-symbols-outlined text-2xl">local_pharmacy</span>
           <p class="">Followed Pharmacies</p>
         </a>
@@ -824,7 +1273,7 @@
                 </div>
                 <div>
                   <button
-                    ariaLabel="Edit information button"
+                    aria-label="Edit information button"
                     class="text-primary"
                     type="button"
                     data-modal-hide="profile-info-modal"
@@ -1084,6 +1533,6 @@
     <!-- end change photo modal -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./../assets/js/main.js"></script>
   </body>
 </html>

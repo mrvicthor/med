@@ -1,0 +1,2211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Medic</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="./../assets/css/main.css" />
+    <link rel="stylesheet" href="./../assets/css/table.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="w-full h-screen bg-[#fef7ff] flex flex-col">
+    <!-- top nav bar -->
+    <header
+      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 flex flex-row justify-between items-center drop-shadow-xl px-2 lg:px-8 py-2"
+    >
+      <div class="h-full flex flex-row items-center space-x-2">
+        <button
+          class="flex lg:hidden"
+          type="button"
+          data-drawer-target="mobile-drawer"
+          data-drawer-show="mobile-drawer"
+          aria-controls="mobile-drawer"
+        >
+          <span class="material-symbols-outlined"> menu </span>
+        </button>
+        <div class="flex flex-row items-center space-x-2">
+          <a class="w-16 md:w-20 h-16 md:h-20 flex items-center justify-center">
+            <img
+              src="./../assets/images/logos/logo.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="w-[70%] flex flex-row items-center justify-evenly">
+        <form
+          action="/search.html"
+          method="get"
+          class="hidden lg:flex h-full w-[20vw] bg-gray-200 dark:bg-slate-800 rounded-full p-2 items-center"
+        >
+          <input
+            type="text"
+            name="q"
+            class="h-full w-[90%] outline-none bg-transparent border-0 rounded-full px-1"
+          />
+          <div class="w-[10%] h-full flex items-center justify-center">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+        </form>
+
+        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+          <div
+            class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4"
+          >
+            <div
+              id="mega-menu"
+              class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+            >
+              <ul
+                class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse"
+              >
+                <li>
+                  <button
+                    id="category-drop-down-button"
+                    data-dropdown-toggle="category-drop-down"
+                    class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                  >
+                    Categories
+                    <span class="material-symbols-outlined">
+                      arrow_drop_down
+                    </span>
+                  </button>
+                  <div
+                    id="category-drop-down"
+                    class="absolute z-10 flex hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
+                  >
+                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
+                      <ul
+                        class="space-y-4"
+                        aria-labelledby="category-drop-down-button"
+                      >
+                        <li>
+                          <a
+                            href="#"
+                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                          >
+                            1
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <button
+                    id="service-drop-down-button"
+                    data-dropdown-toggle="service-drop-down"
+                    class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                  >
+                    Services
+                    <span class="material-symbols-outlined">
+                      arrow_drop_down
+                    </span>
+                  </button>
+                  <div
+                    id="service-drop-down"
+                    class="absolute z-10 flex hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
+                  >
+                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
+                      <ul
+                        class="space-y-4"
+                        aria-labelledby="service-drop-down-button"
+                      >
+                        <li>
+                          <a
+                            href="#"
+                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                          >
+                            1
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <button
+                    id="resources-drop-down-button"
+                    data-dropdown-toggle="resources-drop-down"
+                    class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                  >
+                    Resources
+                    <span class="material-symbols-outlined">
+                      arrow_drop_down
+                    </span>
+                  </button>
+                  <div
+                    id="resources-drop-down"
+                    class="absolute z-10 flex hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
+                  >
+                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
+                      <ul
+                        class="space-y-4"
+                        aria-labelledby="resources-drop-down-button"
+                      >
+                        <li>
+                          <a
+                            href="#"
+                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                          >
+                            1
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <a
+                    href="./contact-us.html"
+                    class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="flex flex-row items-center space-x-8 relative">
+        <div class="flex flex-row items-center space-x-6">
+          <button
+            title="Notifications"
+            id="notificationDropDown"
+            data-dropdown-toggle="notification-dropdown"
+            aria-label="profile link"
+            data-dropdown-placement="top"
+          >
+            <div class="relative">
+              <span class="material-symbols-outlined text-base md:text-xl"
+                >notifications</span
+              >
+              <div
+                class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+              >
+                <p class="text-white text-[10px] md:text-xs">3</p>
+              </div>
+            </div>
+            <div
+              id="notification-dropdown"
+              class="z-50 hidden w-[400px] h-[70vh] p-2"
+            >
+              <div
+                class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
+              >
+                <div class="w-full h-full overflow-y-auto rounded-md">
+                  <div class="flex h-[15%] bg-white flex-col space-y-4">
+                    <div
+                      class="w-full relative flex justify-start items-center"
+                    >
+                      <p class="text-lg font-semibold">Notifications</p>
+                      <div
+                        aria-label="close login form button"
+                        class="absolute right-0"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined"> close </span>
+                      </div>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                      <div class="bg-secondary rounded-md py-1 px-3">
+                        <p class="font-bold text-xs">3 Unread</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
+                  >
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="w-full flex flex-row items-center justify-between"
+                      >
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        <div class="bg-secondary rounded-md py-1 px-2">
+                          <p class="text-xs">Today</p>
+                        </div>
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                      </div>
+                      <!-- notification ite, -->
+                      <div
+                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                      <!-- notification item -->
+                      <div
+                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                    </div>
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="w-full flex flex-row items-center justify-between"
+                      >
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        <div class="bg-secondary rounded-md py-1 px-2">
+                          <p class="text-xs">Yesterday</p>
+                        </div>
+                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                      </div>
+                      <!-- notification ite, -->
+                      <div
+                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                      <!-- notification item -->
+                      <div
+                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                      >
+                        <div class="flex flex-row space-x-2">
+                          <p class="font-bold">Khalid</p>
+                          <p>gave you a 4-star rating</p>
+                        </div>
+                        <p class="text-xs">12:10 pm</p>
+                      </div>
+                      <!-- end notification item -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+        <a href="/cart.html" class="relative">
+          <span class="material-symbols-outlined text-base md:text-xl"
+            >shopping_cart</span
+          >
+          <div
+            class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+          >
+            <p class="text-white text-[10px] md:text-xs">3</p>
+          </div>
+        </a>
+
+        <button
+          id="accountDropDown"
+          data-dropdown-toggle="account-dropdown"
+          data-dropdown-placement="top"
+          aria-label="profile link"
+          class="flex flex-row space-x-2 items-center"
+        >
+          <div
+            class="w-10 h-10 bg-primary/30 rounded-full flex items-center justify-center relative"
+          >
+            <img
+              src="./../assets/images/avatar/avatar.png"
+              layout="fill"
+              objectFit="cover"
+              alt="Pharmacy"
+            />
+          </div>
+
+          <div id="account-dropdown" class="z-10 hidden w-72 p-2">
+            <div
+              class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full shadow p-2 rounded-lg"
+            >
+              <div
+                class="w-full py-2 flex flex-col space-y-4 items-start border-b"
+              >
+                <div>
+                  <p class="text-[#49454F] font-bold">Welcome back!</p>
+                </div>
+                <a href="#" class="text-red-600 font-semibold"> Log out </a>
+              </div>
+              <div class="flex flex-col items-start space-y-3">
+                <a
+                  href="#"
+                  data-modal-target="profile-info-modal"
+                  data-modal-toggle="profile-info-modal"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl">
+                    person_2
+                  </span>
+                  <p class="font-semibold text-[#49454F]">Profile</p>
+                </a>
+                <a
+                  href="./index.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl"
+                    >shopping_cart_checkout</span
+                  >
+                  <p class="font-semibold text-[#49454F]">My Orders</p>
+                </a>
+                <a
+                  href="./messages.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl">chat</span>
+                  <p class="font-semibold text-[#49454F]">Messages</p>
+                </a>
+                <a
+                  href="help.html"
+                  class="flex flex-row space-x-2 items-center"
+                >
+                  <span class="material-symbols-outlined text-2xl"> help </span>
+                  <p class="font-semibold text-[#49454F]">Help</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </header>
+    <!-- end top bar -->
+    <!-- main section -->
+    <main
+      class="w-full h-fit min-h-[100vh] max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10 py-4"
+    >
+      <!-- navigation menu -->
+      <nav
+        class="lg:w-[25%] xl:w-[20%] max-h-[90vh] h-fit hidden lg:flex flex-col space-y-8 bg-white overflow-y-auto pt-10"
+      >
+        <div class="px-2 xl:px-4 2xl:px-10">
+          <p class="font-semibold text-capitalize text-2xl">Account</p>
+        </div>
+        <div class="flex flex-col space-y-2 px-2 xl:px-4 2xl:px-10">
+          <a href="./index.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">My orders</p>
+          </a>
+          <a href="./messages.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">chat</span>
+            <p class="">Messages</p>
+          </a>
+          <a href="./feedbacks.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">chat_info</span>
+            <p class="">Feedbacks</p>
+          </a>
+          <a href="./pharmacy.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >local_pharmacy</span
+            >
+            <p class="">Followed Pharmacies</p>
+          </a>
+          <a href="./reminder.html" class="active-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >notifications_active</span
+            >
+            <p class="">Medication Reminder</p>
+          </a>
+          <a href="./settings.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+
+        <div class="flex flex-col space-y-2 px-8 border-t py-2">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </nav>
+      <section
+        class="w-full lg:w-[75%] h-full rounded-md flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+      >
+        <div
+          class="w-full bg-white rounded-md p-4 flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-row items-center justify-between">
+            <p class="text-xl font-semibold">Medication Reminder</p>
+            <button
+              ariaLabel="Create reminder button"
+              data-modal-id="create-reminder-modal"
+              class="btn-primary rounded-full h-10 py-3 px-4 flex flex-row items-center space-x-2"
+            >
+              <span class="material-symbols-outlined text-sm">add</span>
+              <p>Create Reminder</p>
+            </button>
+          </div>
+
+          <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+            <ul
+              class="flex overflow-x-auto no-scrollbar -mb-px text-sm font-medium text-center"
+              id="default-tab"
+              data-tabs-toggle="#default-tab-content"
+              role="tablist"
+              data-tabs-active-classes="border-primary"
+            >
+              <li class="me-2" role="presentation">
+                <button
+                  class="w-[150px] lg:w-[250px] inline-block p-4 border-b-2 rounded-t-lg"
+                  id="all-tab"
+                  data-tabs-target="#all"
+                  type="button"
+                  role="tab"
+                  aria-controls="all"
+                  aria-selected="false"
+                >
+                  All
+                </button>
+              </li>
+              <li class="me-2" role="presentation">
+                <button
+                  class="w-[150px] lg:w-[250px] inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  id="active-tab"
+                  data-tabs-target="#active"
+                  type="button"
+                  role="tab"
+                  aria-controls="active"
+                  aria-selected="false"
+                >
+                  Active
+                </button>
+              </li>
+              <li class="me-2" role="presentation">
+                <button
+                  class="w-[150px] lg:w-[250px] inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  id="paused-tab"
+                  data-tabs-target="#paused"
+                  type="button"
+                  role="tab"
+                  aria-controls="paused"
+                  aria-selected="false"
+                >
+                  Paused
+                </button>
+              </li>
+              <li role="presentation">
+                <button
+                  class="w-[150px] lg:w-[250px] inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  id="completed-tab"
+                  data-tabs-target="#completed"
+                  type="button"
+                  role="tab"
+                  aria-controls="completed"
+                  aria-selected="false"
+                >
+                  Completed
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div id="default-tab-content">
+            <div
+              class="p-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2"
+              id="all"
+              role="tabpanel"
+              aria-labelledby="all-tab"
+            >
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div class="bg-red-200 text-red-500 px-4 py-1 rounded-md">
+                      <p class="font-semibold capitalize text-xs">Active</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div
+                      class="bg-green-200 text-green-500 px-4 py-1 rounded-md"
+                    >
+                      <p class="font-semibold capitalize text-xs">Completed</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div
+                      class="bg-yellow-200 text-yellow-500 px-4 py-1 rounded-md"
+                    >
+                      <p class="font-semibold capitalize text-xs">Paused</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div class="bg-red-200 text-red-500 px-4 py-1 rounded-md">
+                      <p class="font-semibold capitalize text-xs">Active</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div
+                      class="bg-green-200 text-green-500 px-4 py-1 rounded-md"
+                    >
+                      <p class="font-semibold capitalize text-xs">Completed</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div
+                      class="bg-yellow-200 text-yellow-500 px-4 py-1 rounded-md"
+                    >
+                      <p class="font-semibold capitalize text-xs">Paused</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden p-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2"
+              id="active"
+              role="tabpanel"
+              aria-labelledby="active-tab"
+            >
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div class="bg-red-200 text-red-500 px-4 py-1 rounded-md">
+                      <p class="font-semibold capitalize text-xs">Active</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden p-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2"
+              id="paused"
+              role="tabpanel"
+              aria-labelledby="paused-tab"
+            >
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div
+                      class="bg-yellow-200 text-yellow-500 px-4 py-1 rounded-md"
+                    >
+                      <p class="font-semibold capitalize text-xs">Paused</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden p-4 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2"
+              id="completed"
+              role="tabpanel"
+              aria-labelledby="completed-tab"
+            >
+              <div
+                class="min-h-64 w-full border rounded-md flex flex-col justify-between bg-[#F3EDF7] dark:bg-slate-900"
+              >
+                <div class="flex flex-col space-y-4 p-2">
+                  <div class="flex flex-row items-center justify-between">
+                    <div
+                      class="bg-green-200 text-green-500 px-4 py-1 rounded-md"
+                    >
+                      <p class="font-semibold capitalize text-xs">Completed</p>
+                    </div>
+                    <button>
+                      <span class="material-symbols-outlined text-sm">
+                        arrow_forward_ios
+                      </span>
+                    </button>
+                  </div>
+
+                  <div class="flex flex-col space-y-2">
+                    <p>Paracetamol 500mg</p>
+                    <div class="flex flex-row items-center space-x-2 text-sm">
+                      <p class="font-semibold">Dosage:</p>
+                      <span class="font-light">2 tablet</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 gap-1">
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">8:00am</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">2:00pm</p>
+                    </div>
+                    <div
+                      class="bg-[#F3EDF7] dark:bg-slate-800 drop-shadow-2xl py-1 px-3 h-fit w-fit rounded-xl border"
+                    >
+                      <p class="text-xs font-semibold">7:00pm</p>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-between">
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Instruction:</p>
+                      <span class="font-light text-sm"
+                        >To be taken after meal.</span
+                      >
+                    </div>
+                    <div class="flex flex-col">
+                      <p class="font-semibold">Duration:</p>
+                      <span class="font-light text-sm">1 week</span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full bg-white dark:bg-slate-800 h-14 rounded-b-md flex items-center justify-center space-x-2"
+                >
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded-sm accent-primary"
+                  />
+
+                  <p class="font-semibold">Mark as Completed</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer
+      class="h-fit w-full bg-[#48464C] dark:bg-slate-900 py-2 flex flex-col justify-between"
+    >
+      <div
+        class="px-2 md:px-6 xl:px-20 flex flex-col lg:flex-row space-y-3 lg:space-y-0 items-start pt-12 pb-10 lg:justify-between"
+      >
+        <div
+          class="w-full lg:w-[25%] flex flex-col items-center lg:items-start space-y-3 text-white"
+        >
+          <p class="text-sm xl:text-xl font-semibold text-gray-300">
+            Subscribe to our Newsletter
+          </p>
+          <p class="text-xs xl:text-base">
+            Receive relevant offers, health tips, and news
+          </p>
+          <div class="w-full flex flex-col space-y-4 items-center">
+            <input
+              placeholder="Email address"
+              class="rounded-full h-12 text-input bg-white border-gray-500 dark:bg-gray-800"
+            />
+
+            <button
+              ariaLabel="Subscribe button"
+              class="btn-primary h-fit w-fit px-6 py-3 rounded-full"
+            >
+              <p>Subscribe</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- desktop items  -->
+        <div class="hidden lg:flex flex-row w-[70%] justify-between">
+          <div class="flex flex-col space-y-5">
+            <p class="text-white font-semibold text-sm xl:text-xl">Services</p>
+            <div class="flex flex-col space-y-2">
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Compare Drugs
+                </p>
+              </a>
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Adverse Effects Checker
+                </p>
+              </a>
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Drug Interaction Checker
+                </p>
+              </a>
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Pharmacy Locator
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-5">
+            <p class="text-white font-semibold text-sm xl:text-xl">
+              Partnership
+            </p>
+            <div class="flex flex-col space-y-2">
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Register Pharmacy
+                </p>
+              </a>
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Career
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-5">
+            <p class="text-white font-semibold text-sm xl:text-xl">Support</p>
+            <div class="flex flex-col space-y-2">
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  FAQs
+                </p>
+              </a>
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Contact Us
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col space-y-5">
+            <p class="text-white font-semibold text-sm xl:text-xl">Resources</p>
+            <div class="flex flex-col space-y-2">
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  Support
+                </p>
+              </a>
+              <a href="'/" class="flex flex-row items-center space-x-2">
+                <p class="text-white font-semibold text-xs xl:text-base">
+                  News Update
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- mobile menus -->
+        <div class="w-full flex lg:hidden flex-col border-t">
+          <div
+            id="accordion-collapse"
+            class="w-full"
+            data-accordion="collapse"
+            data-active-classes="bg-inherit"
+          >
+            <div class="flex flex-col border-b py-2 px-2">
+              <h2 id="service-accordion" class="w-full">
+                <button
+                  type="button"
+                  class="w-full flex flex-row py-3 items-center justify-between"
+                  data-accordion-target="#service-accordion-body"
+                  aria-controls="service-accordion-body"
+                  aria-expanded="true"
+                >
+                  <span class="text-white">Services</span>
+                  <span
+                    data-accordion-icon
+                    class="material-symbols-outlined text-white"
+                  >
+                    arrow_drop_up
+                  </span>
+                </button>
+              </h2>
+              <div
+                id="service-accordion-body"
+                class="hidden"
+                aria-labelledby="service-accordion"
+              >
+                <div class="flex flex-col space-y-3 items-center">
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Compare Drugs
+                    </p>
+                  </a>
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Adverse Effects Checker
+                    </p>
+                  </a>
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Drug Interaction Checker
+                    </p>
+                  </a>
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Pharmacy Locator
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col border-b py-2 px-2">
+              <h2 id="partnership-accordion" class="w-full">
+                <button
+                  type="button"
+                  class="w-full flex flex-row py-3 items-center justify-between"
+                  data-accordion-target="#partnership-accordion-body"
+                  aria-controls="partnership-accordion-body"
+                >
+                  <span class="text-white">Partnerships</span>
+                  <span
+                    data-accordion-icon
+                    class="material-symbols-outlined text-white"
+                  >
+                    arrow_drop_up
+                  </span>
+                </button>
+              </h2>
+              <div
+                id="partnership-accordion-body"
+                class="hidden"
+                aria-labelledby="partnership-accordion"
+              >
+                <div class="flex flex-col space-y-3 items-center">
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Register Pharmacy
+                    </p>
+                  </a>
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Career
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col border-b py-2 px-2">
+              <h2 id="support-accordion" class="w-full">
+                <button
+                  type="button"
+                  class="w-full flex flex-row py-3 items-center justify-between"
+                  data-accordion-target="#support-accordion-body"
+                  aria-controls="support-accordion-body"
+                >
+                  <span class="text-white">Support</span>
+                  <span
+                    data-accordion-icon
+                    class="material-symbols-outlined text-white"
+                  >
+                    arrow_drop_up
+                  </span>
+                </button>
+              </h2>
+              <div
+                id="support-accordion-body"
+                class="hidden"
+                aria-labelledby="support-accordion"
+              >
+                <div class="flex flex-col space-y-3 items-center">
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      FAQs
+                    </p>
+                  </a>
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Contact Us
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col border-b py-2 px-2">
+              <h2 id="resources-accordion" class="w-full">
+                <button
+                  type="button"
+                  class="w-full flex flex-row py-3 items-center justify-between"
+                  data-accordion-target="#resources-accordion-body"
+                  aria-controls="resources-accordion-body"
+                >
+                  <span class="text-white">Resources</span>
+                  <span
+                    data-accordion-icon
+                    class="material-symbols-outlined text-white"
+                  >
+                    arrow_drop_up
+                  </span>
+                </button>
+              </h2>
+              <div
+                id="resources-accordion-body"
+                class="hidden"
+                aria-labelledby="resources-accordion"
+              >
+                <div class="flex flex-col space-y-3 items-center">
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      Support
+                    </p>
+                  </a>
+                  <a href="'/" class="flex flex-row items-center space-x-2">
+                    <p class="text-white font-semibold text-xs xl:text-base">
+                      News Update
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="lg:border-t-2 h-fit px-2 md:px-6 xl:px-20 flex flex-col-reverse lg:flex-row items-center space-y-10 lg:space-y-0 py-2 justify-between"
+      >
+        <div class="flex flex-row items-center space-x-2 mt-10 lg:mt-0">
+          <span class="material-symbols-outlined text-white"> copyright </span>
+          <p class="text-white">2024, Medloc.</p>
+        </div>
+        <div class="flex flex-row items-center space-x-5">
+          <a aria-label="Terms and Conditions link" class="text-white">
+            Terms and Conditions
+          </a>
+          <a href="/" aria-label="Privacy Policy link" class="text-white">
+            Privacy Policy
+          </a>
+        </div>
+        <div class="flex flex-row items-center space-x-4">
+          <a href="https://facebook.com/" aria-label="Facebook link">
+            <img
+              src="./../assets/images/icons/facebook.png"
+              class="w-8 h-8 text-white"
+            />
+          </a>
+          <a href="https://instagram.com/" aria-label="Facebook link">
+            <img
+              src="./../assets/images/icons/instagram.png"
+              class="w-8 h-8 text-white"
+            />
+          </a>
+          <a href="https://x.com/" aria-label="Facebook link">
+            <img
+              src="./../assets/images/icons/x.png"
+              class="w-8 h-8 text-white"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- drawer component -->
+    <div
+      id="mobile-drawer"
+      class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 dark:bg-gray-800"
+      tabindex="-1"
+      aria-labelledby="mobile-drawer-label"
+    >
+      <div class="flex flex-row space-x-2 border-b">
+        <button
+          type="button"
+          data-drawer-hide="mobile-drawer"
+          aria-controls="mobile-drawer"
+        >
+          <span class="material-symbols-outlined"> close </span>
+        </button>
+        <div class="flex flex-row items-center space-x-2">
+          <a class="w-16 h-10 flex items-center justify-center">
+            <img
+              src="./../assets/images/logos/logo.png"
+              alt="logo"
+              class="w-full h-full object-contain"
+            />
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex flex-col overflow-y-auto no-scrollbar space-y-2 py-4 px-2"
+      >
+        <a href="./index.html" class="inactive-menu">
+          <span class="material-symbols-outlined text-2xl"
+            >shopping_cart_checkout</span
+          >
+          <p class="">My orders</p>
+        </a>
+        <a href="./messages.html" class="inactive-menu">
+          <span class="material-symbols-outlined text-2xl">chat</span>
+          <p class="">Messages</p>
+        </a>
+        <a href="./feedbacks.html" class="inactive-menu">
+          <span class="material-symbols-outlined text-2xl">chat_info</span>
+          <p class="">Feedbacks</p>
+        </a>
+        <a href="./pharmacy.html" class="inactive-menu">
+          <span class="material-symbols-outlined text-2xl">local_pharmacy</span>
+          <p class="">Followed Pharmacies</p>
+        </a>
+        <a href="./reminder.html" class="active-menu">
+          <span class="material-symbols-outlined text-2xl"
+            >notifications_active</span
+          >
+          <p class="">Medication Reminder</p>
+        </a>
+        <a href="./settings.html" class="inactive-menu">
+          <span class="material-symbols-outlined text-2xl">settings</span>
+          <p class="">Settings</p>
+        </a>
+        <a href="./help.html" class="inactive-menu">
+          <span class="material-symbols-outlined text-2xl">help</span>
+          <p class="">Help</p>
+        </a>
+      </div>
+    </div>
+    <!-- end drawer component -->
+
+    <!-- profile modal -->
+    <div
+      id="profile-info-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:px-10"
+      >
+        <!-- Modal content -->
+        <form class="relative">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Profile Info
+            </h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="profile-info-modal"
+            >
+              <span class="material-symbols-outlined"> close </span>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="w-full p-4 md:p-5 flex flex-col space-y-6">
+            <form
+              onSubmit="{handleSubmit(handleUpdate)}"
+              class="flex flex-col items-center space-y-5 py-5 px-2"
+            >
+              <div class="w-full flex items-end justify-between">
+                <div class="w-24 h-24 bg-primary rounded-full relative">
+                  <img
+                    src="./../assets/images/avatar/avatar.png"
+                    alt="avatar"
+                    layout="fill"
+                    objectFit="cover"
+                    class="rounded-full"
+                  />
+                  <button
+                    aria-label="Change avatar button"
+                    type="button"
+                    data-modal-hide="profile-info-modal"
+                    data-modal-target="change-photo-modal"
+                    data-modal-toggle="change-photo-modal"
+                    class="absolute bottom-0 right-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined"> edit </span>
+                  </button>
+                </div>
+                <div>
+                  <button
+                    ariaLabel="Edit information button"
+                    class="text-primary"
+                    type="button"
+                    data-modal-hide="profile-info-modal"
+                    data-modal-target="edit-profile-info-modal"
+                    data-modal-toggle="edit-profile-info-modal"
+                  >
+                    Edit info
+                  </button>
+                </div>
+              </div>
+              <div class="w-full flex flex-col space-y-5">
+                <div class="input-group">
+                  <label class="input-label">First and Last Name </label>
+                  <input type="text" class="text-input rounded-lg" />
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Email </label>
+                  <input type="email" class="text-input rounded-lg" />
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <div class="input-group">
+                    <label class="input-label">Phone Number </label>
+                    <input type="text" class="text-input rounded-lg" />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Address </label>
+                    <input type="text" class="text-input rounded-lg" />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">City </label>
+                    <input type="text" class="text-input rounded-lg" />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">State </label>
+                    <input type="text" class="text-input rounded-lg" />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Country </label>
+                    <input type="text" class="text-input rounded-lg" />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Zip Code </label>
+                    <input type="text" class="text-input rounded-lg" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- end modal body -->
+        </form>
+      </div>
+    </div>
+    <!-- end profile modal -->
+
+    <!-- edit profile modal -->
+    <div
+      id="edit-profile-info-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:px-10"
+      >
+        <!-- Modal content -->
+        <form class="relative">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Edit Info
+            </h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="edit-profile-info-modal"
+            >
+              <span class="material-symbols-outlined"> close </span>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="w-full p-4 md:p-5 flex flex-col space-y-6">
+            <form
+              onSubmit="{handleSubmit(handleUpdate)}"
+              class="flex flex-col items-center space-y-5 py-5 px-2"
+            >
+              <div class="w-full flex flex-col space-y-5">
+                <div class="input-group">
+                  <label class="input-label">First and Last Name </label>
+                  <input
+                    type="text"
+                    value="Helen Adams"
+                    class="text-input rounded-lg"
+                  />
+                </div>
+                <div class="input-group">
+                  <label class="input-label">Email </label>
+                  <input
+                    type="email"
+                    value="helenadams@gmail.com"
+                    class="text-input rounded-lg"
+                  />
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <div class="input-group">
+                    <label class="input-label">Phone Number </label>
+                    <input
+                      type="text"
+                      value="+1 345 3625 525"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Address </label>
+                    <input
+                      type="text"
+                      value="42 Kings St, Kaystone, CA."
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">City </label>
+                    <input
+                      type="text"
+                      value="Los Angeles"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">State </label>
+                    <input
+                      type="text"
+                      value="California"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Country </label>
+                    <input
+                      type="text"
+                      value="United States"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Zip Code </label>
+                    <input
+                      type="text"
+                      value="90001"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- end modal body -->
+          <!-- Modal footer -->
+          <div
+            class="flex items-center justify-end p-4 md:p-5 space-x-4 border-gray-200 rounded-b dark:border-gray-600"
+          >
+            <button
+              data-modal-hide="edit-profile-info-modal"
+              type="button"
+              class="py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              style="background-color: #2a8420"
+              class="text-white hover:opacity-70 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+              id="continueBtn"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end edit profile modal -->
+
+    <!-- change photo modal -->
+    <div
+      id="change-photo-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:px-10"
+      >
+        <!-- Modal content -->
+        <form class="relative">
+          <!-- Modal header -->
+          <div
+            class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600"
+          >
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+              Change Photo
+            </h3>
+            <button
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+              data-modal-hide="change-photo-modal"
+            >
+              <span class="material-symbols-outlined"> close </span>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="w-full p-4 md:p-5 flex flex-col space-y-6 items-center">
+            <div class="w-36 h-36 bg-primary rounded-full">
+              <img
+                src="./../assets/images/avatar/avatar.png"
+                alt="avatar"
+                layout="fill"
+                objectFit="cover"
+                class="w-full h-full rounded-full"
+              />
+            </div>
+            <div class="w-full">
+              <p class="text-center">
+                In order to take a photo you must allow Medloc to access your
+                camera from within your browser’s settings, or upload a photo
+                from your device.
+              </p>
+            </div>
+          </div>
+          <!-- end modal body -->
+          <!-- Modal footer -->
+          <div
+            class="flex items-center justify-end p-4 md:p-5 space-x-4 border-gray-200 rounded-b dark:border-gray-600"
+          >
+            <button
+              data-modal-hide="change-photo-modal"
+              type="button"
+              onclick="alert('opening camera...')"
+              class="py-2.5 px-5 ms-3 text-sm font-medium text-primary focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            >
+              Use Camera
+            </button>
+            <button
+              type="button"
+              style="background-color: #2a8420"
+              class="text-white hover:opacity-70 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center"
+              id="continueBtn"
+            >
+              Upload Photo
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end change photo modal -->
+
+    <!-- create reminder modal -->
+    <div
+      data-modal-id="create-reminder-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">Create Reminder</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <form class="flex flex-col items-center space-y-5 py-5 px-2">
+                <div class="w-full flex flex-col space-y-5">
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Drug Name <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" name="name" class="text-input" />
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Dosage <span class="text-red-600">*</span>
+                    </label>
+                    <input class="text-input" type="text" name="dosage" />
+                  </div>
+
+                  <div class="flex flex-row flex-wrap items-center gap-4">
+                    <div class="w-[40%] input-group">
+                      <label class="input-label"
+                        >Does Time <span class="text-red-600">*</span>
+                      </label>
+                      <input
+                        label="Dose time"
+                        class="text-input"
+                        placeholder="00:00 AM"
+                        readonly
+                      />
+                    </div>
+
+                    <button
+                      type="button"
+                      aria-placeholder="Add extra dose time"
+                      class="w-12 h-12 rounded-full border flex items-center justify-center"
+                      data-modal-target="create-reminder-modal-date"
+                      data-modal-toggle="create-reminder-modal-date"
+                    >
+                      <span class="material-symbols-outlined"> add </span>
+                    </button>
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Instruction (Additional things to remember)
+                    </label>
+                    <input class="text-input" type="text" name="instruction" />
+                  </div>
+
+                  <div class="input-group relative w-full">
+                    <label class="input-label"
+                      >Start Date <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      datepicker
+                      type="text"
+                      class="text-input"
+                      placeholder="dd/mm/yyyy"
+                    />
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Duration (How long to take drug)
+                      <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      class="text-input"
+                      type="text"
+                      name="duration"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end create reminder modal -->
+
+    <!-- date picker -->
+    <div
+      id="create-reminder-modal-date"
+      tabindex="-1"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative p-4 w-full max-w-sm max-h-full">
+        <div class="relative bg-white rounded-xl shadow">
+          <div class="w-full p-3 px-5 flex flex-col space-y-7">
+            <p>Enter time</p>
+            <div
+              class="w-full flex flex-row space-x-5 items-center justify-center"
+            >
+              <div class="flex flex-row space-x-6 items-center">
+                <div
+                  class="w-16 h-16 border rounded-md bg-secondary/20 border-secondary flex items-center justify-center"
+                >
+                  <input
+                    type="text"
+                    value="00"
+                    maxlength="2"
+                    class="w-full h-full rounded-md bg-inherit text-center"
+                  />
+                </div>
+                <span class="text-lg font-bold">:</span>
+                <div
+                  class="w-16 h-16 border rounded-md bg-secondary/20 border-secondary flex items-center justify-center"
+                >
+                  <input
+                    type="text"
+                    value="00"
+                    maxlength="2"
+                    class="w-full h-full rounded-md bg-inherit text-center"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="h-24 w-16 bg-gray-200 border border-gray-400 rounded-md flex flex-col justify-between"
+              >
+                <button
+                  class="h-[50%] w-full rounded-t-md border-b border-gray-400 flex items-center justify-center"
+                  type="button"
+                >
+                  <p>AM</p>
+                </button>
+                <button class="h-[50%] w-full bg-secondary" type="button">
+                  <p>PM</p>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-row justify-between">
+              <span class="material-symbols-outlined"> schedule </span>
+              <div class="flex flex-row space-x-4">
+                <button
+                  data-modal-hide="create-reminder-modal-date"
+                  aria-label="Cancel time button"
+                  class="text-primary"
+                >
+                  Cancel
+                </button>
+                <button
+                  data-modal-hide="create-reminder-modal-date"
+                  aria-label="Update time button"
+                  class="text-primary"
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end date picker -->
+
+    <!-- edit reminder modal -->
+    <div
+      data-modal-id="edit-reminder-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">Edit Reminder</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <form class="flex flex-col items-center space-y-5 py-5 px-2">
+                <div class="w-full flex flex-col space-y-5">
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Drug Name <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value="Paracetamol 500mg"
+                      class="text-input"
+                    />
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Dosage <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      class="text-input"
+                      value="1 tablet"
+                      type="text"
+                      name="dosage"
+                    />
+                  </div>
+
+                  <div class="flex flex-row flex-wrap items-center gap-4">
+                    <div class="w-[40%] input-group">
+                      <label class="input-label"
+                        >Does Time <span class="text-red-600">*</span>
+                      </label>
+                      <input
+                        label="Dose time"
+                        class="text-input"
+                        placeholder="00:00 AM"
+                        value="08:00 AM"
+                        readonly
+                      />
+                    </div>
+
+                    <button
+                      type="button"
+                      aria-placeholder="Add extra dose time"
+                      class="w-12 h-12 rounded-full border flex items-center justify-center"
+                      data-modal-target="edit-reminder-modal-date"
+                      data-modal-toggle="edit-reminder-modal-date"
+                    >
+                      <span class="material-symbols-outlined"> add </span>
+                    </button>
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Instruction (Additional things to remember)
+                    </label>
+                    <input
+                      class="text-input"
+                      value="To be taken after meal."
+                      type="text"
+                      name="instruction"
+                    />
+                  </div>
+
+                  <div class="input-group relative w-full">
+                    <label class="input-label"
+                      >Start Date <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      datepicker
+                      type="text"
+                      class="text-input"
+                      placeholder="dd/mm/yyyy"
+                      value="10/12/23"
+                    />
+                  </div>
+
+                  <div class="input-group">
+                    <label class="input-label"
+                      >Duration (How long to take drug)
+                      <span class="text-red-600">*</span>
+                    </label>
+                    <input
+                      class="text-input"
+                      type="text"
+                      name="duration"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end edit reminder modal -->
+
+    <!-- date picker -->
+    <div
+      id="edit-reminder-modal-date"
+      tabindex="-1"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative p-4 w-full max-w-sm max-h-full">
+        <div class="relative bg-white rounded-xl shadow">
+          <div class="w-full p-3 px-5 flex flex-col space-y-7">
+            <p>Enter time</p>
+            <div
+              class="w-full flex flex-row space-x-5 items-center justify-center"
+            >
+              <div class="flex flex-row space-x-6 items-center">
+                <div
+                  class="w-16 h-16 border rounded-md bg-secondary/20 border-secondary flex items-center justify-center"
+                >
+                  <input
+                    type="text"
+                    value="00"
+                    maxlength="2"
+                    class="w-full h-full rounded-md bg-inherit text-center"
+                  />
+                </div>
+                <span class="text-lg font-bold">:</span>
+                <div
+                  class="w-16 h-16 border rounded-md bg-secondary/20 border-secondary flex items-center justify-center"
+                >
+                  <input
+                    type="text"
+                    value="00"
+                    maxlength="2"
+                    class="w-full h-full rounded-md bg-inherit text-center"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="h-24 w-16 bg-gray-200 border border-gray-400 rounded-md flex flex-col justify-between"
+              >
+                <button
+                  class="h-[50%] w-full rounded-t-md border-b border-gray-400 flex items-center justify-center"
+                  type="button"
+                >
+                  <p>AM</p>
+                </button>
+                <button class="h-[50%] w-full bg-secondary" type="button">
+                  <p>PM</p>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-row justify-between">
+              <span class="material-symbols-outlined"> schedule </span>
+              <div class="flex flex-row space-x-4">
+                <button
+                  data-modal-hide="edit-reminder-modal-date"
+                  aria-label="Cancel time button"
+                  class="text-primary"
+                >
+                  Cancel
+                </button>
+                <button
+                  data-modal-hide="edit-reminder-modal-date"
+                  aria-label="Update time button"
+                  class="text-primary"
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end date picker -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="./../assets/js/main.js"></script>
+    <script src="./../assets/js/modal.js"></script>
+  </body>
+</html>

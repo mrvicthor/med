@@ -388,7 +388,158 @@
     <!-- main section -->
     <main
       class="w-full h-fit min-h-[100vh] max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10 py-4"
-    ></main>
+    >
+      <!-- navigation menu -->
+      <nav
+        class="lg:w-[25%] xl:w-[20%] max-h-[90vh] h-fit hidden lg:flex flex-col space-y-8 bg-white overflow-y-auto pt-10"
+      >
+        <div class="px-2 xl:px-4 2xl:px-10">
+          <p class="font-semibold text-capitalize text-2xl">Account</p>
+        </div>
+        <div class="flex flex-col space-y-2 px-2 xl:px-4 2xl:px-8">
+          <a href="./index.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >shopping_cart_checkout</span
+            >
+            <p class="">My orders</p>
+          </a>
+          <a href="./messages.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">chat</span>
+            <p class="">Messages</p>
+          </a>
+          <a href="./feedbacks.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">chat_info</span>
+            <p class="">Feedbacks</p>
+          </a>
+          <a href="./pharmacy.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >local_pharmacy</span
+            >
+            <p class="">Followed Pharmacies</p>
+          </a>
+          <a href="./reminder.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl"
+              >notifications_active</span
+            >
+            <p class="">Medication Reminder</p>
+          </a>
+          <a href="./settings.html" class="active-menu">
+            <span class="material-symbols-outlined text-2xl">settings</span>
+            <p class="">Settings</p>
+          </a>
+          <a href="./help.html" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">help</span>
+            <p class="">Help</p>
+          </a>
+        </div>
+
+        <div class="flex flex-col space-y-2 px-8 border-t py-2">
+          <button onclick="alert('Logging out...')" class="inactive-menu">
+            <span class="material-symbols-outlined text-2xl">logout</span>
+            <p class="">Logout</p>
+          </button>
+        </div>
+      </nav>
+      <section
+        class="w-full lg:w-[75%] h-full rounded-md flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+      >
+        <div
+          class="w-full bg-white rounded-md p-4 flex flex-col space-y-4 overflow-y-auto no-scrollbar"
+        >
+          <div class="flex flex-row items-center justify-between">
+            <p class="text-xl font-semibold">Settings</p>
+          </div>
+          <div id="default-content" class="tab-content flex flex-col space-y-3">
+            <!-- profile information -->
+            <div class="w-full py-2 border rounded-md flex flex-col space-y-4">
+              <div class="px-2">
+                <p class="text-lg font-semibold">Profile Information</p>
+              </div>
+
+              <button
+                data-modal-id="personal-profile-modal"
+                class="modal-open flex flex-row justify-between p-2 border-b"
+              >
+                <p>Name, and contact info</p>
+                <span class="material-symbols-outlined text-gray-400">
+                  arrow_right_alt
+                </span>
+              </button>
+              <button
+                data-modal-id="bussiness-info-modal"
+                class="modal-open flex flex-row justify-between p-2 border-b"
+              >
+                <p>Shipping Address</p>
+                <span class="material-symbols-outlined text-gray-400">
+                  arrow_right_alt
+                </span>
+              </button>
+              <button
+                data-modal-id="profile-avatar-modal"
+                class="modal-open flex flex-row justify-between p-2"
+              >
+                <p>Profile image</p>
+                <span class="material-symbols-outlined text-gray-400">
+                  arrow_right_alt
+                </span>
+              </button>
+            </div>
+            <!-- end profile information -->
+
+            <!-- account access -->
+            <div class="w-full py-2 border rounded-md flex flex-col space-y-4">
+              <div class="px-2">
+                <p class="text-lg font-semibold">Account Access</p>
+              </div>
+
+              <button
+                data-modal-id="change-password-modal"
+                class="modal-open flex flex-row justify-between p-2 border-b"
+              >
+                <p>Change password</p>
+                <span class="material-symbols-outlined text-gray-400">
+                  arrow_right_alt
+                </span>
+              </button>
+
+              <button
+                data-modal-id="two-step-verification-modal"
+                class="flex flex-row justify-between p-2"
+              >
+                <p>Two-step verification</p>
+                <div class="flex space-x-3 items-center">
+                  <p>Off</p>
+                  <span class="material-symbols-outlined text-gray-400">
+                    arrow_right_alt
+                  </span>
+                </div>
+              </button>
+            </div>
+            <!-- end account access -->
+
+            <!-- account access -->
+            <div class="w-full py-2 border rounded-md flex flex-col space-y-4">
+              <div class="px-2">
+                <p class="text-lg font-semibold">Notifications</p>
+              </div>
+
+              <button
+                data-modal-id="email-notification-modal"
+                class="flex flex-row justify-between p-2"
+              >
+                <p>Email Notifications</p>
+                <div class="flex space-x-3 items-center">
+                  <span class="material-symbols-outlined text-gray-400">
+                    arrow_right_alt
+                  </span>
+                </div>
+              </button>
+            </div>
+            <!-- end account access -->
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- footer -->
     <footer
@@ -732,7 +883,7 @@
       <div
         class="flex flex-col overflow-y-auto no-scrollbar space-y-2 py-4 px-2"
       >
-        <a href="./index.html" class="active-menu">
+        <a href="./index.html" class="inactive-menu">
           <span class="material-symbols-outlined text-2xl"
             >shopping_cart_checkout</span
           >
@@ -756,7 +907,7 @@
           >
           <p class="">Medication Reminder</p>
         </a>
-        <a href="./settings.html" class="inactive-menu">
+        <a href="./settings.html" class="active-menu">
           <span class="material-symbols-outlined text-2xl">settings</span>
           <p class="">Settings</p>
         </a>
@@ -767,6 +918,466 @@
       </div>
     </div>
     <!-- end drawer component -->
+
+    <!-- profile update modal -->
+    <div
+      data-modal-id="personal-profile-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">Edit Info</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-10">
+                <div class="flex flex-col space-y-5">
+                  <div class="input-group">
+                    <label class="input-label">First and Last Name </label>
+                    <input
+                      type="text"
+                      value="Helen Adams"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Email </label>
+                    <input
+                      type="email"
+                      value="helenadams@gmail.com"
+                      class="text-input rounded-lg"
+                    />
+                  </div>
+                  <div class="grid grid-cols-1 gap-5">
+                    <div class="input-group">
+                      <label class="input-label">Phone Number </label>
+                      <input
+                        type="text"
+                        value="+1 345 3625 525"
+                        class="text-input rounded-lg"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Address </label>
+                      <input
+                        type="text"
+                        value="42 Kings St, Kaystone, CA."
+                        class="text-input rounded-lg"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">City </label>
+                      <input
+                        type="text"
+                        value="Los Angeles"
+                        class="text-input rounded-lg"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">State </label>
+                      <input
+                        type="text"
+                        value="California"
+                        class="text-input rounded-lg"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Country </label>
+                      <input
+                        type="text"
+                        value="United States"
+                        class="text-input rounded-lg"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <label class="input-label">Zip Code </label>
+                      <input
+                        type="text"
+                        value="90001"
+                        class="text-input rounded-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="modal-footer flex justify-end pt-2">
+            <div class="flex flex-row items-center justify-end">
+              <div class="flex flex-row items-center space-x-2">
+                <button
+                  type="reset"
+                  class="modal-close btn-primary-outline h-10 px-6 rounded-full"
+                >
+                  <p class="text-green-500">Cancel</p>
+                </button>
+                <button
+                  ariaLabel="Add New Product button"
+                  type="submit"
+                  class="btn-primary rounded-full h-10 py-3 px-4 flex flex-row items-center space-x-2"
+                >
+                  <p>Save</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end profile update modal -->
+
+    <!-- change password update modal -->
+    <div
+      data-modal-id="change-password-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">Change Password</p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-10">
+                <div class="flex flex-col space-y-5">
+                  <div class="input-group">
+                    <label class="input-label">Old Password </label>
+                    <input
+                      type="password"
+                      class="text-input"
+                      value="12345678"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">New Password </label>
+                    <input type="password" class="text-input" />
+                  </div>
+                  <div class="input-group">
+                    <label class="input-label">Confirm New Password </label>
+                    <input type="password" class="text-input" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="modal-footer flex justify-end pt-2">
+            <div class="flex flex-row items-center justify-end">
+              <div class="flex flex-row items-center space-x-2">
+                <button
+                  type="reset"
+                  class="modal-close btn-primary-outline h-10 px-6 rounded-full"
+                >
+                  <p class="text-green-500">Cancel</p>
+                </button>
+                <button
+                  ariaLabel="Add New Product button"
+                  type="submit"
+                  class="btn-primary rounded-full h-10 py-3 px-4 flex flex-row items-center space-x-2"
+                >
+                  <p>Save</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end change password update modal -->
+
+    <!-- two step verification update modal -->
+    <div
+      data-modal-id="two-step-verification-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[90%] md:w-[40%] lg:w-[35%] xl:w-[30%] max-h-[90%] mx-auto rounded-xl flex flex-col"
+      >
+        <div class="w-full flex flex-col space-y-4 py-4">
+          <div class="modal-header flex justify-between items-center pb-3 px-4">
+            <p class="text-2xl font-bold modal-title">Two-step verification</p>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-10">
+                <div class="flex flex-col space-y-2">
+                  <div
+                    class="flex flex-row items-start space-x-3 border-b px-4 py-2"
+                  >
+                    <input
+                      type="radio"
+                      name="status"
+                      class="w-6 h-6 accent-primary"
+                    />
+                    <div class="flex flex-col">
+                      <p class="text-lg">On</p>
+                      <p class="text-gray-500">
+                        I need extra security, send me token whenever I want to
+                        sign in.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="flex flex-row items-start space-x-3 border-b px-4 py-2"
+                  >
+                    <input
+                      type="radio"
+                      name="status"
+                      class="w-6 h-6 accent-primary"
+                    />
+                    <div class="flex flex-col">
+                      <p class="text-lg">Off</p>
+                      <p class="text-gray-500">
+                        I don't need 2-step verification
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="modal-footer flex justify-end pt-2">
+            <div class="flex flex-row items-center justify-end">
+              <div class="flex flex-row items-center space-x-2">
+                <button type="reset" class="modal-close h-10 px-6">
+                  <p class="text-gray-500">Cancel</p>
+                </button>
+                <button
+                  ariaLabel="Add New Product button"
+                  type="submit"
+                  class="text-primary h-10 py-3 px-4 flex flex-row items-center space-x-2"
+                >
+                  <p>Save</p>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end two step verification update modal -->
+
+    <!-- email notification modal -->
+    <div
+      data-modal-id="email-notification-modal"
+      class="modal fixed top-0 left-0 w-screen h-[100vh] items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300"
+    >
+      <div
+        class="bg-white w-[95%] md:w-[50%] lg:w-[50%] xl:w-[40%] max-h-[95%] mx-auto rounded-lg flex flex-col overflow-y-auto no-scrollbar p-2 lg:p-10"
+      >
+        <div class="w-full flex flex-col space-y-10 py-4">
+          <div class="modal-header flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold modal-title">
+              Select Email Notifications
+            </p>
+            <button
+              class="modal-close text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-content">
+              <div class="flex flex-col space-y-4">
+                <div
+                  class="w-full rounded-md border flex flex-col space-y-2 p-2 py-3"
+                >
+                  <div>
+                    <div class="w-full flex items-center justify-between">
+                      <p class="">Medication reminders</p>
+                      <div class="switch" data-bg-color="bg-primary">
+                        <label
+                          for="toggle"
+                          class="flex items-center cursor-pointer"
+                        >
+                          <div class="relative">
+                            <!-- Input -->
+                            <input
+                              id="toggle"
+                              type="checkbox"
+                              class="sr-only"
+                            />
+                            <!-- Line -->
+                            <div
+                              class="switch-bg w-14 h-8 bg-gray-100 rounded-full shadow-inner"
+                            ></div>
+                            <!-- Indicator -->
+                            <div
+                              class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow inset-y-0"
+                            ></div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-400 text-sm font-light">
+                    Get notified to take your medications
+                  </p>
+                </div>
+                <div
+                  class="w-full rounded-md border flex flex-col space-y-2 p-2 py-3"
+                >
+                  <div>
+                    <div class="w-full flex items-center justify-between">
+                      <p class="">Price alerts</p>
+                      <div class="switch" data-bg-color="bg-primary">
+                        <label
+                          for="toggle2"
+                          class="flex items-center cursor-pointer"
+                        >
+                          <div class="relative">
+                            <!-- Input -->
+                            <input
+                              id="toggle2"
+                              type="checkbox"
+                              class="sr-only"
+                            />
+                            <!-- Line -->
+                            <div
+                              class="switch-bg w-14 h-8 bg-gray-100 rounded-full shadow-inner"
+                            ></div>
+                            <!-- Indicator -->
+                            <div
+                              class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow inset-y-0"
+                            ></div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-400 text-sm font-light">
+                    Get notified about price updates
+                  </p>
+                </div>
+                <div
+                  class="w-full rounded-md border flex flex-col space-y-2 p-2 py-3"
+                >
+                  <div>
+                    <div class="w-full flex items-center justify-between">
+                      <p class="">Sales announcements</p>
+                      <div class="switch" data-bg-color="bg-primary">
+                        <label
+                          for="toggle3"
+                          class="flex items-center cursor-pointer"
+                        >
+                          <div class="relative">
+                            <!-- Input -->
+                            <input
+                              id="toggle3"
+                              type="checkbox"
+                              class="sr-only"
+                            />
+                            <!-- Line -->
+                            <div
+                              class="switch-bg w-14 h-8 bg-gray-100 rounded-full shadow-inner"
+                            ></div>
+                            <!-- Indicator -->
+                            <div
+                              class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow inset-y-0"
+                            ></div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-400 text-sm font-light">
+                    Stay in the know about big sales like health week
+                  </p>
+                </div>
+                <div
+                  class="w-full rounded-md border flex flex-col space-y-2 p-2 py-3"
+                >
+                  <div>
+                    <div class="w-full flex items-center justify-between">
+                      <p class="">Order updates</p>
+                      <div class="switch" data-bg-color="bg-primary">
+                        <label
+                          for="toggle4"
+                          class="flex items-center cursor-pointer"
+                        >
+                          <div class="relative">
+                            <!-- Input -->
+                            <input
+                              id="toggle4"
+                              type="checkbox"
+                              class="sr-only"
+                            />
+                            <!-- Line -->
+                            <div
+                              class="switch-bg w-14 h-8 bg-gray-100 rounded-full shadow-inner"
+                            ></div>
+                            <!-- Indicator -->
+                            <div
+                              class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow inset-y-0"
+                            ></div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-400 text-sm font-light">
+                    Get notified of your order status
+                  </p>
+                </div>
+                <div
+                  class="w-full rounded-md border flex flex-col space-y-2 p-2 py-3"
+                >
+                  <div>
+                    <div class="w-full flex items-center justify-between">
+                      <p class="">News updates</p>
+                      <div class="switch" data-bg-color="bg-primary">
+                        <label
+                          for="toggle5"
+                          class="flex items-center cursor-pointer"
+                        >
+                          <div class="relative">
+                            <!-- Input -->
+                            <input
+                              id="toggle5"
+                              type="checkbox"
+                              class="sr-only"
+                            />
+                            <!-- Line -->
+                            <div
+                              class="switch-bg w-14 h-8 bg-gray-100 rounded-full shadow-inner"
+                            ></div>
+                            <!-- Indicator -->
+                            <div
+                              class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow inset-y-0"
+                            ></div>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-gray-400 text-sm font-light">
+                    Get health-related news updates
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end email notification modal -->
 
     <!-- profile modal -->
     <div
@@ -1084,6 +1695,7 @@
     <!-- end change photo modal -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./../assets/js/main.js"></script>
+    <script src="./../assets/js/modal.js"></script>
   </body>
 </html>

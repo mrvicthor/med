@@ -20,7 +20,7 @@
   <body class="w-full h-screen bg-[#fef7ff] flex flex-col">
     <!-- top nav bar -->
     <header
-      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 flex flex-row justify-between items-center drop-shadow-xl px-2 lg:px-8 py-2"
+      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 flex flex-row justify-between items-center drop-shadow-xl px-4 lg:px-8 py-2"
     >
       <div class="h-full flex flex-row items-center space-x-2">
         <button
@@ -387,8 +387,44 @@
     <!-- end top bar -->
     <!-- main section -->
     <main
-      class="w-full h-fit min-h-[100vh] max-h-[90vh] flex flex-col lg:flex-row overflow-y-auto gap-10 py-4"
-    ></main>
+      class="w-full h-fit min-h-[100vh] max-h-[90vh] overflow-y-auto gap-10"
+    >
+      <section class="banner-bg-gradient banner">
+        <div class="px-4 py-4">
+          <h1 class="text-white font-medium banner-header">
+            Everything you need for<br />
+            your prescriptions
+          </h1>
+          <p class="banner-description text-white">
+            Over 100s of drugs available in registered pharmacies
+          </p>
+          <div class="mt-4">
+            <div
+              class="bg-white rounded-xl overflow-hidden px-2 py-3 flex flex-col space-y-2"
+            >
+              <div class="flex items-center banner-search-wrapper rounded-3xl">
+                <div class="w-[10%] h-full flex items-center justify-center">
+                  <span class="material-symbols-outlined">search</span>
+                </div>
+                <input
+                  type="search"
+                  class="w-full bg-transparent"
+                  placeholder="Drug name, brand name, or condition..."
+                />
+              </div>
+              <div class="flex justify-between items-center">
+                <button class="btn-all rounded-3xl px-6">All</button>
+                <button class="hidden">search</button>
+                <span>OR</span>
+                <button class="btn-find rounded-3xl bg-white px-6">
+                  Find pharmacy <span class="hidden">near you</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- footer -->
     <footer

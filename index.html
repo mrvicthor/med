@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,368 +20,382 @@
   <body class="w-full h-screen bg-[#fef7ff] flex flex-col">
     <!-- top nav bar -->
     <header
-      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 flex flex-row justify-between items-center drop-shadow-xl px-4 lg:px-8 py-2"
+      class="h-[8%] lg:h-[10%] w-full bg-white dark:bg-slate-900 drop-shadow-xl"
     >
-      <div class="h-full flex flex-row items-center space-x-2">
-        <button
-          class="flex lg:hidden"
-          type="button"
-          data-drawer-target="mobile-drawer"
-          data-drawer-show="mobile-drawer"
-          aria-controls="mobile-drawer"
-        >
-          <span class="material-symbols-outlined"> menu </span>
-        </button>
-        <div class="flex flex-row items-center space-x-2">
-          <a class="w-16 md:w-20 h-16 md:h-20 flex items-center justify-center">
-            <img
-              src="./../assets/images/logos/logo.png"
-              alt="logo"
-              class="w-full h-full object-contain"
-            />
-          </a>
-        </div>
-      </div>
-
-      <div class="w-[70%] flex flex-row items-center justify-evenly">
-        <form
-          action="/search.html"
-          method="get"
-          class="hidden lg:flex h-full w-[20vw] bg-gray-200 dark:bg-slate-800 rounded-full p-2 items-center"
-        >
-          <input
-            type="text"
-            name="q"
-            class="h-full w-[90%] outline-none bg-transparent border-0 rounded-full px-1"
-          />
-          <div class="w-[10%] h-full flex items-center justify-center">
-            <span class="material-symbols-outlined">search</span>
-          </div>
-        </form>
-
-        <nav class="bg-white border-gray-200 dark:bg-gray-900">
-          <div
-            class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4"
-          >
-            <div
-              id="mega-menu"
-              class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-            >
-              <ul
-                class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse"
-              >
-                <li>
-                  <button
-                    id="category-drop-down-button"
-                    data-dropdown-toggle="category-drop-down"
-                    class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
-                  >
-                    Categories
-                    <span class="material-symbols-outlined">
-                      arrow_drop_down
-                    </span>
-                  </button>
-                  <div
-                    id="category-drop-down"
-                    class="absolute z-10 flex hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
-                  >
-                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                      <ul
-                        class="space-y-4"
-                        aria-labelledby="category-drop-down-button"
-                      >
-                        <li>
-                          <a
-                            href="#"
-                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-                          >
-                            1
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <button
-                    id="service-drop-down-button"
-                    data-dropdown-toggle="service-drop-down"
-                    class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
-                  >
-                    Services
-                    <span class="material-symbols-outlined">
-                      arrow_drop_down
-                    </span>
-                  </button>
-                  <div
-                    id="service-drop-down"
-                    class="absolute z-10 flex hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
-                  >
-                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                      <ul
-                        class="space-y-4"
-                        aria-labelledby="service-drop-down-button"
-                      >
-                        <li>
-                          <a
-                            href="#"
-                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-                          >
-                            1
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <button
-                    id="resources-drop-down-button"
-                    data-dropdown-toggle="resources-drop-down"
-                    class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
-                  >
-                    Resources
-                    <span class="material-symbols-outlined">
-                      arrow_drop_down
-                    </span>
-                  </button>
-                  <div
-                    id="resources-drop-down"
-                    class="absolute z-10 flex hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
-                  >
-                    <div class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
-                      <ul
-                        class="space-y-4"
-                        aria-labelledby="resources-drop-down-button"
-                      >
-                        <li>
-                          <a
-                            href="#"
-                            class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
-                          >
-                            1
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <a
-                    href="./contact-us.html"
-                    class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
-                    >Contact Us</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <div class="flex flex-row items-center space-x-8 relative">
-        <div class="flex flex-row items-center space-x-6">
+      <div
+        class="md:container h-full md:mx-auto px-4 flex flex-row justify-between items-center lg:px-6 py-2"
+      >
+        <div class="h-full flex flex-row items-center space-x-2">
           <button
-            title="Notifications"
-            id="notificationDropDown"
-            data-dropdown-toggle="notification-dropdown"
-            aria-label="profile link"
-            data-dropdown-placement="top"
+            class="flex lg:hidden"
+            type="button"
+            data-drawer-target="mobile-drawer"
+            data-drawer-show="mobile-drawer"
+            aria-controls="mobile-drawer"
           >
-            <div class="relative">
-              <span class="material-symbols-outlined text-base md:text-xl"
-                >notifications</span
-              >
+            <span class="material-symbols-outlined"> menu </span>
+          </button>
+          <div class="flex flex-row items-center space-x-2">
+            <a
+              class="w-16 md:w-20 h-16 md:h-20 flex items-center justify-center"
+            >
+              <img
+                src="./../assets/images/logos/logo.png"
+                alt="logo"
+                class="w-full h-full object-contain"
+              />
+            </a>
+          </div>
+        </div>
+
+        <div class="w-[70%] flex flex-row items-center justify-center">
+          <form
+            action="/search.html"
+            method="get"
+            class="hidden lg:flex h-full w-[20vw] bg-gray-200 dark:bg-slate-800 rounded-full p-2 items-center"
+          >
+            <input
+              type="text"
+              name="q"
+              class="h-full w-[90%] outline-none bg-transparent border-0 rounded-full px-1"
+            />
+            <div class="w-[10%] h-full flex items-center justify-center">
+              <span class="material-symbols-outlined">search</span>
+            </div>
+          </form>
+
+          <nav class="bg-white border-gray-200 dark:bg-gray-900">
+            <div
+              class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4"
+            >
               <div
-                class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+                id="mega-menu"
+                class="items-center justify-between hidden w-full lg:flex lg:w-auto leading-5:order-1"
               >
-                <p class="text-white text-[10px] md:text-xs">3</p>
+                <ul
+                  class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-4 rtl:space-x-reverse"
+                >
+                  <li>
+                    <button
+                      id="category-drop-down-button"
+                      data-dropdown-toggle="category-drop-down"
+                      class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                    >
+                      Categories
+                      <span class="material-symbols-outlined">
+                        arrow_drop_down
+                      </span>
+                    </button>
+                    <div
+                      id="category-drop-down"
+                      class="absolute z-10 hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
+                    >
+                      <div
+                        class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white"
+                      >
+                        <ul
+                          class="space-y-4"
+                          aria-labelledby="category-drop-down-button"
+                        >
+                          <li>
+                            <a
+                              href="#"
+                              class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                            >
+                              1
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <button
+                      id="service-drop-down-button"
+                      data-dropdown-toggle="service-drop-down"
+                      class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                    >
+                      Services
+                      <span class="material-symbols-outlined">
+                        arrow_drop_down
+                      </span>
+                    </button>
+                    <div
+                      id="service-drop-down"
+                      class="absolute z-10 hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
+                    >
+                      <div
+                        class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white"
+                      >
+                        <ul
+                          class="space-y-4"
+                          aria-labelledby="service-drop-down-button"
+                        >
+                          <li>
+                            <a
+                              href="#"
+                              class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                            >
+                              1
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <button
+                      id="resources-drop-down-button"
+                      data-dropdown-toggle="resources-drop-down"
+                      class="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                    >
+                      Resources
+                      <span class="material-symbols-outlined">
+                        arrow_drop_down
+                      </span>
+                    </button>
+                    <div
+                      id="resources-drop-down"
+                      class="absolute z-10 hidden w-auto grid-cols-2 text-sm bg-white border border-gray-100 rounded-lg shadow-md dark:border-gray-700 md:grid-cols-3 dark:bg-gray-700"
+                    >
+                      <div
+                        class="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white"
+                      >
+                        <ul
+                          class="space-y-4"
+                          aria-labelledby="resources-drop-down-button"
+                        >
+                          <li>
+                            <a
+                              href="#"
+                              class="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500"
+                            >
+                              1
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a
+                      href="./contact-us.html"
+                      class="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-primary md:p-0"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
               </div>
             </div>
-            <div
-              id="notification-dropdown"
-              class="z-50 hidden w-[400px] h-[70vh] p-2"
-            >
-              <div
-                class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
-              >
-                <div class="w-full h-full overflow-y-auto rounded-md">
-                  <div class="flex h-[15%] bg-white flex-col space-y-4">
-                    <div
-                      class="w-full relative flex justify-start items-center"
-                    >
-                      <p class="text-lg font-semibold">Notifications</p>
-                      <div
-                        aria-label="close login form button"
-                        class="absolute right-0"
-                        type="button"
-                      >
-                        <span class="material-symbols-outlined"> close </span>
-                      </div>
-                    </div>
-                    <div class="flex flex-row justify-between">
-                      <div class="bg-secondary rounded-md py-1 px-3">
-                        <p class="font-bold text-xs">3 Unread</p>
-                      </div>
-                    </div>
-                  </div>
+          </nav>
+        </div>
 
-                  <div
-                    class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
-                  >
-                    <div class="flex flex-col space-y-3">
+        <div class="flex flex-row items-center space-x-8 relative">
+          <div class="flex flex-row items-center space-x-6">
+            <button
+              title="Notifications"
+              id="notificationDropDown"
+              data-dropdown-toggle="notification-dropdown"
+              aria-label="profile link"
+              data-dropdown-placement="top"
+            >
+              <div class="relative">
+                <span class="material-symbols-outlined text-base md:text-xl"
+                  >notifications</span
+                >
+                <div
+                  class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+                >
+                  <p class="text-white text-[10px] md:text-xs">3</p>
+                </div>
+              </div>
+              <div
+                id="notification-dropdown"
+                class="z-50 hidden w-[400px] h-[70vh] p-2"
+              >
+                <div
+                  class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full h-full overflow-y-auto no-scrollbar shadow p-2 rounded-lg"
+                >
+                  <div class="w-full h-full overflow-y-auto rounded-md">
+                    <div class="flex h-[15%] bg-white flex-col space-y-4">
                       <div
-                        class="w-full flex flex-row items-center justify-between"
+                        class="w-full relative flex justify-start items-center"
                       >
-                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
-                        <div class="bg-secondary rounded-md py-1 px-2">
-                          <p class="text-xs">Today</p>
+                        <p class="text-lg font-semibold">Notifications</p>
+                        <div
+                          aria-label="close login form button"
+                          class="absolute right-0"
+                          type="button"
+                        >
+                          <span class="material-symbols-outlined"> close </span>
                         </div>
-                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
                       </div>
-                      <!-- notification ite, -->
-                      <div
-                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
-                      >
-                        <div class="flex flex-row space-x-2">
-                          <p class="font-bold">Khalid</p>
-                          <p>gave you a 4-star rating</p>
+                      <div class="flex flex-row justify-between">
+                        <div class="bg-secondary rounded-md py-1 px-3">
+                          <p class="font-bold text-xs">3 Unread</p>
                         </div>
-                        <p class="text-xs">12:10 pm</p>
                       </div>
-                      <!-- end notification item -->
-                      <!-- notification item -->
-                      <div
-                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
-                      >
-                        <div class="flex flex-row space-x-2">
-                          <p class="font-bold">Khalid</p>
-                          <p>gave you a 4-star rating</p>
-                        </div>
-                        <p class="text-xs">12:10 pm</p>
-                      </div>
-                      <!-- end notification item -->
                     </div>
-                    <div class="flex flex-col space-y-3">
-                      <div
-                        class="w-full flex flex-row items-center justify-between"
-                      >
-                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
-                        <div class="bg-secondary rounded-md py-1 px-2">
-                          <p class="text-xs">Yesterday</p>
+
+                    <div
+                      class="w-full flex flex-col space-y-3 max-h-[85%] overflow-y-auto no-scrollbar"
+                    >
+                      <div class="flex flex-col space-y-3">
+                        <div
+                          class="w-full flex flex-row items-center justify-between"
+                        >
+                          <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                          <div class="bg-secondary rounded-md py-1 px-2">
+                            <p class="text-xs">Today</p>
+                          </div>
+                          <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
                         </div>
-                        <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
-                      </div>
-                      <!-- notification ite, -->
-                      <div
-                        class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
-                      >
-                        <div class="flex flex-row space-x-2">
-                          <p class="font-bold">Khalid</p>
-                          <p>gave you a 4-star rating</p>
+                        <!-- notification ite, -->
+                        <div
+                          class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                        >
+                          <div class="flex flex-row space-x-2">
+                            <p class="font-bold">Khalid</p>
+                            <p>gave you a 4-star rating</p>
+                          </div>
+                          <p class="text-xs">12:10 pm</p>
                         </div>
-                        <p class="text-xs">12:10 pm</p>
-                      </div>
-                      <!-- end notification item -->
-                      <!-- notification item -->
-                      <div
-                        class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
-                      >
-                        <div class="flex flex-row space-x-2">
-                          <p class="font-bold">Khalid</p>
-                          <p>gave you a 4-star rating</p>
+                        <!-- end notification item -->
+                        <!-- notification item -->
+                        <div
+                          class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                        >
+                          <div class="flex flex-row space-x-2">
+                            <p class="font-bold">Khalid</p>
+                            <p>gave you a 4-star rating</p>
+                          </div>
+                          <p class="text-xs">12:10 pm</p>
                         </div>
-                        <p class="text-xs">12:10 pm</p>
+                        <!-- end notification item -->
                       </div>
-                      <!-- end notification item -->
+                      <div class="flex flex-col space-y-3">
+                        <div
+                          class="w-full flex flex-row items-center justify-between"
+                        >
+                          <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                          <div class="bg-secondary rounded-md py-1 px-2">
+                            <p class="text-xs">Yesterday</p>
+                          </div>
+                          <div class="w-[40%] h-[0.2px] bg-gray-400"></div>
+                        </div>
+                        <!-- notification ite, -->
+                        <div
+                          class="w-full border border-primary/10 bg-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                        >
+                          <div class="flex flex-row space-x-2">
+                            <p class="font-bold">Khalid</p>
+                            <p>gave you a 4-star rating</p>
+                          </div>
+                          <p class="text-xs">12:10 pm</p>
+                        </div>
+                        <!-- end notification item -->
+                        <!-- notification item -->
+                        <div
+                          class="w-full border border-primary/10 p-2 py-4 flex flex-col items-start rounded-md"
+                        >
+                          <div class="flex flex-row space-x-2">
+                            <p class="font-bold">Khalid</p>
+                            <p>gave you a 4-star rating</p>
+                          </div>
+                          <p class="text-xs">12:10 pm</p>
+                        </div>
+                        <!-- end notification item -->
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <a href="/cart.html" class="relative">
+            <span class="material-symbols-outlined text-base md:text-xl"
+              >shopping_cart</span
+            >
+            <div
+              class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
+            >
+              <p class="text-white text-[10px] md:text-xs">3</p>
+            </div>
+          </a>
+
+          <button
+            id="accountDropDown"
+            data-dropdown-toggle="account-dropdown"
+            data-dropdown-placement="top"
+            aria-label="profile link"
+            class="flex flex-row space-x-2 items-center"
+          >
+            <div
+              class="w-10 h-10 bg-primary/30 rounded-full flex items-center justify-center relative"
+            >
+              <img
+                src="./../assets/images/avatar/avatar.png"
+                layout="fill"
+                objectFit="cover"
+                alt="Pharmacy"
+              />
+            </div>
+
+            <div id="account-dropdown" class="z-10 hidden w-72 p-2">
+              <div
+                class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full shadow p-2 rounded-lg"
+              >
+                <div
+                  class="w-full py-2 flex flex-col space-y-4 items-start border-b"
+                >
+                  <div>
+                    <p class="text-[#49454F] font-bold">Welcome back!</p>
+                  </div>
+                  <a href="#" class="text-red-600 font-semibold"> Log out </a>
+                </div>
+                <div class="flex flex-col items-start space-y-3">
+                  <a
+                    href="#"
+                    data-modal-target="profile-info-modal"
+                    data-modal-toggle="profile-info-modal"
+                    class="flex flex-row space-x-2 items-center"
+                  >
+                    <span class="material-symbols-outlined text-2xl">
+                      person_2
+                    </span>
+                    <p class="font-semibold text-[#49454F]">Profile</p>
+                  </a>
+                  <a
+                    href="./index.html"
+                    class="flex flex-row space-x-2 items-center"
+                  >
+                    <span class="material-symbols-outlined text-2xl"
+                      >shopping_cart_checkout</span
+                    >
+                    <p class="font-semibold text-[#49454F]">My Orders</p>
+                  </a>
+                  <a
+                    href="./messages.html"
+                    class="flex flex-row space-x-2 items-center"
+                  >
+                    <span class="material-symbols-outlined text-2xl">chat</span>
+                    <p class="font-semibold text-[#49454F]">Messages</p>
+                  </a>
+                  <a
+                    href="help.html"
+                    class="flex flex-row space-x-2 items-center"
+                  >
+                    <span class="material-symbols-outlined text-2xl">
+                      help
+                    </span>
+                    <p class="font-semibold text-[#49454F]">Help</p>
+                  </a>
                 </div>
               </div>
             </div>
           </button>
         </div>
-        <a href="/cart.html" class="relative">
-          <span class="material-symbols-outlined text-base md:text-xl"
-            >shopping_cart</span
-          >
-          <div
-            class="absolute z-10 -top-1 md:-top-2 -right-2 w-4 h-4 md:w-4 md:h-4 bg-red-600 rounded-full flex items-center justify-center"
-          >
-            <p class="text-white text-[10px] md:text-xs">3</p>
-          </div>
-        </a>
-
-        <button
-          id="accountDropDown"
-          data-dropdown-toggle="account-dropdown"
-          data-dropdown-placement="top"
-          aria-label="profile link"
-          class="flex flex-row space-x-2 items-center"
-        >
-          <div
-            class="w-10 h-10 bg-primary/30 rounded-full flex items-center justify-center relative"
-          >
-            <img
-              src="./../assets/images/avatar/avatar.png"
-              layout="fill"
-              objectFit="cover"
-              alt="Pharmacy"
-            />
-          </div>
-
-          <div id="account-dropdown" class="z-10 hidden w-72 p-2">
-            <div
-              class="bg-white divide-y divide-gray-100 flex flex-col space-y-5 w-full shadow p-2 rounded-lg"
-            >
-              <div
-                class="w-full py-2 flex flex-col space-y-4 items-start border-b"
-              >
-                <div>
-                  <p class="text-[#49454F] font-bold">Welcome back!</p>
-                </div>
-                <a href="#" class="text-red-600 font-semibold"> Log out </a>
-              </div>
-              <div class="flex flex-col items-start space-y-3">
-                <a
-                  href="#"
-                  data-modal-target="profile-info-modal"
-                  data-modal-toggle="profile-info-modal"
-                  class="flex flex-row space-x-2 items-center"
-                >
-                  <span class="material-symbols-outlined text-2xl">
-                    person_2
-                  </span>
-                  <p class="font-semibold text-[#49454F]">Profile</p>
-                </a>
-                <a
-                  href="./index.html"
-                  class="flex flex-row space-x-2 items-center"
-                >
-                  <span class="material-symbols-outlined text-2xl"
-                    >shopping_cart_checkout</span
-                  >
-                  <p class="font-semibold text-[#49454F]">My Orders</p>
-                </a>
-                <a
-                  href="./messages.html"
-                  class="flex flex-row space-x-2 items-center"
-                >
-                  <span class="material-symbols-outlined text-2xl">chat</span>
-                  <p class="font-semibold text-[#49454F]">Messages</p>
-                </a>
-                <a
-                  href="help.html"
-                  class="flex flex-row space-x-2 items-center"
-                >
-                  <span class="material-symbols-outlined text-2xl"> help </span>
-                  <p class="font-semibold text-[#49454F]">Help</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </button>
       </div>
     </header>
     <!-- end top bar -->
@@ -390,19 +404,27 @@
       class="w-full h-fit min-h-[100vh] max-h-[90vh] overflow-y-auto gap-10"
     >
       <section class="banner-bg-gradient banner">
-        <div class="px-4 py-4 space-y-3">
-          <h1 class="text-white font-medium banner-header">
-            Everything you need for<br />
+        <div
+          class="px-4 py-4 space-y-3 md:container md:mx-auto md:px-6 md:pt-[100px]"
+        >
+          <h1
+            class="text-white font-medium banner-header lg:text-[56px] md:text-center md:leading-[64px] md:tracking-tight"
+          >
+            Everything you need for<br class="md:hidden" />
             your prescriptions
           </h1>
-          <p class="banner-description text-white">
+          <p
+            class="banner-description text-white md:text-center md:text-4xl md:leading-tight"
+          >
             Over 100s of drugs available in registered pharmacies
           </p>
           <div class="mt-4">
             <div
-              class="bg-white rounded-xl overflow-hidden px-2 py-3 flex flex-col space-y-2"
+              class="bg-white rounded-xl overflow-hidden px-2 py-3 flex flex-col space-y-2 md:flex-row md:justify-between md:space-y-0 md:py-5 md:space-x-4"
             >
-              <div class="flex items-center banner-search-wrapper rounded-3xl">
+              <div
+                class="flex items-center banner-search-wrapper rounded-3xl md:w-[564px]"
+              >
                 <div class="w-[10%] h-full flex items-center justify-center">
                   <span class="material-symbols-outlined">search</span>
                 </div>
@@ -412,11 +434,21 @@
                   placeholder="Drug name, brand name, or condition..."
                 />
               </div>
-              <div class="flex justify-between items-center">
-                <button class="btn-all rounded-3xl px-6">All</button>
-                <button class="hidden">search</button>
+              <div class="flex justify-between items-center md:flex-1 md:gap-2">
+                <button
+                  class="btn-all rounded-3xl px-6 lg:w-[196px] lg:h-[48px]"
+                >
+                  All
+                </button>
+                <button
+                  class="hidden md:block bg-[#2A8420] lg:h-[48px] md:h-[40px] rounded-3xl px-6 text-white"
+                >
+                  search
+                </button>
                 <span>OR</span>
-                <button class="btn-find rounded-3xl bg-white px-6">
+                <button
+                  class="btn-find rounded-3xl bg-white px-6 lg:w-[226px] lg:h-[48px]"
+                >
                   Find pharmacy <span class="hidden">near you</span>
                 </button>
               </div>

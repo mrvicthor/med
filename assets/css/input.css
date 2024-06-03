@@ -12,6 +12,56 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .banner-bg-gradient {
+    background-image: linear-gradient(
+      rgba(64, 164, 51, 1),
+      rgba(64, 164, 51, 0)
+    );
+    height: 494px;
+  }
+
+  .banner-header {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .banner-description {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+  }
+
+  .banner-search-wrapper {
+    background-color: rgba(247, 242, 250, 1);
+    height: 48px;
+    overflow: hidden;
+  }
+
+  input.search-bar {
+    outline: none;
+    border: none;
+  }
+
+  .btn-all,
+  .btn-find {
+    height: 40px;
+  }
+
+  .btn-all {
+    width: 120px;
+    background-color: rgba(247, 242, 250, 1);
+    border: none;
+  }
+
+  .btn-find {
+    width: 159px;
+    color: #2a8420;
+    border: 1px solid #79747e;
+  }
 }
 
 @layer components {
